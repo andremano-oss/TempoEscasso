@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banda Tempo Escasso | O Pop Rock Mais Animado do RJ</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Oswald para Títulos e Montserrat para Texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#252140',         /* Roxo muito escuro / fundo */
+                            card: '#1e1a35',       /* Card escuro */
+                            textLight: '#F2F2F2',  /* Texto claro */
+                            darkPurple: '#48188C', /* Roxo profundo */
+                            accent: '#9F2ABF',     /* Púrpura vibrante principal */
+                            accentHover: '#862299',/* Púrpura escuro hover */
+                            lilac: '#BF80AE',      /* Lilás suave de destaque */
+                            border: '#3c3566'      /* Cor de bordas */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #252140;
+            color: #F2F2F2;
+            scroll-behavior: smooth;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(191, 128, 174, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(159,42,191,0.25) 0%, rgba(37,33,64,0) 70%);
+        }
+        /* Esconder scrollbar mantendo funcionalidade */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#9F2ABF] selection:text-white bg-grid-pattern min-h-screen flex flex-col justify-between">
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <header class="sticky top-0 z-50 bg-[#252140]/90 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logótipo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9F2ABF] to-[#48188C] flex items-center justify-center shadow-lg shadow-[#9F2ABF]/20 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-guitar text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-xl font-bold tracking-wider uppercase text-white leading-none">Tempo Escasso</span>
+                    <span class="text-[10px] text-[#BF80AE] font-semibold tracking-widest uppercase">Banda Cover Rock</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider">
+                <a href="#sobre" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Sobre</a>
+                <a href="#videos" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-video text-[#BF80AE]"></i> Vídeos
+                </a>
+                <a href="#agenda" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-calendar-check text-[#BF80AE]"></i> Agenda
+                </a>
+                <a href="repertorio.html" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-sliders text-[#9F2ABF]"></i> Monte seu Repertório
+                </a>
+                <a href="#contato" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Contato</a>
+            </nav>
+
+            <!-- Botão de Ação do Menu -->
+            <div class="hidden md:block">
+                <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20show%20da%20Banda%20Tempo%20Escasso." 
+                   target="_blank" 
+                   class="bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/30 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Contratar Agora
+                </a>
+            </div>
+
+            <!-- Botão Menu Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden text-[#F2F2F2] text-2xl focus:outline-none" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Desdobrável -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-3 pb-6 space-y-3 text-sm font-semibold uppercase tracking-wider">
+            <a href="#sobre" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Sobre</a>
+            <a href="#videos" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+                <i class="fa-solid fa-video text-[#BF80AE]"></i> Vídeos e Performances
+            </a>
+            <a href="#agenda" class="block py-2 text-[#BF80AE] font-bold flex items-center gap-2">
+                <i class="fa-regular fa-calendar-check"></i> Agenda e Disponibilidade
+            </a>
+            <a href="repertorio.html" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+                <i class="fa-solid fa-sliders"></i> Monte seu Repertório
+            </a>
+            <a href="#contato" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Contato</a>
+            <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20show%20da%20Banda%20Tempo%20Escasso." 
+               target="_blank" 
+               class="w-full mt-2 bg-[#9F2ABF] text-white font-bold py-3 rounded-xl text-xs uppercase text-center block shadow-lg shadow-[#9F2ABF]/30">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Pedir Orçamento
+            </a>
+        </div>
+    </header>
+
+    <main class="space-y-20 pb-16">
+
+        <!-- SEÇÃO HERO (CHAMADA PRINCIPAL) -->
+        <section class="relative pt-12 lg:pt-20 overflow-hidden">
+            <div class="absolute inset-0 hero-glow pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-4xl mx-auto space-y-6">
+                    
+                    <!-- Selo de Destaque -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#48188C]/60 border border-[#BF80AE]/40 text-[#BF80AE] text-xs font-bold uppercase tracking-widest shadow-md">
+                        <i class="fa-solid fa-bolt text-yellow-400"></i> O Pop Rock mais animado do RJ
+                    </div>
+
+                    <!-- Título Impactante -->
+                    <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-[#F2F2F2] tracking-tight leading-none">
+                        Transforme o seu evento num <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#BF80AE] via-[#9F2ABF] to-purple-400">Show Inesquecível</span>
+                    </h1>
+
+                    <!-- Descrição -->
+                    <p class="text-[#F2F2F2]/80 text-base sm:text-xl max-w-2xl mx-auto font-normal">
+                        Os maiores clássicos do Rock Nacional e Internacional dos anos 80, 90 e 2000 tocados com a energia máxima que o seu público merece.
+                    </p>
+
+                    <!-- Botões de Ação Principais -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Quero%20contratar%20a%20Banda%20Tempo%20Escasso%20para%20o%20meu%20evento." 
+                           target="_blank"
+                           class="w-full sm:w-auto bg-[#9F2ABF] hover:bg-[#862299] text-white font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-xl shadow-[#9F2ABF]/40 flex items-center justify-center gap-3 group">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Solicitar Orçamento Grátis
+                        </a>
+
+                        <a href="#agenda" 
+                           class="w-full sm:w-auto bg-brand-card hover:bg-[#252140] text-[#F2F2F2] font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition border border-[#BF80AE]/40 hover:border-[#9F2ABF] flex items-center justify-center gap-3">
+                            <i class="fa-regular fa-calendar-check text-[#BF80AE]"></i> Checar Data na Agenda
+                        </a>
+                    </div>
+
+                    <!-- Destaques Rápidos -->
+                    <div class="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+                        <div class="bg-brand-card/60 border border-brand-border p-4 rounded-2xl flex items-center gap-3">
+                            <i class="fa-solid fa-users text-[#9F2ABF] text-2xl"></i>
+                            <div>
+                                <h4 class="font-heading uppercase text-sm font-bold text-white">4 Integrantes</h4>
+                                <p class="text-[11px] text-[#BF80AE]">Voz, Guitarra, Baixo e Bateria</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-card/60 border border-brand-border p-4 rounded-2xl flex items-center gap-3">
+                            <i class="fa-solid fa-sliders text-[#9F2ABF] text-2xl"></i>
+                            <div>
+                                <h4 class="font-heading uppercase text-sm font-bold text-white">Setlist À Sua Escolha</h4>
+                                <p class="text-[11px] text-[#BF80AE]">Você escolhe as músicas</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-card/60 border border-brand-border p-4 rounded-2xl flex items-center gap-3">
+                            <i class="fa-solid fa-plug text-[#9F2ABF] text-2xl"></i>
+                            <div>
+                                <h4 class="font-heading uppercase text-sm font-bold text-white">Equipamento Próprio</h4>
+                                <p class="text-[11px] text-[#BF80AE]">Som ideal p/ até 100 pessoas</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-card/60 border border-brand-border p-4 rounded-2xl flex items-center gap-3">
+                            <i class="fa-solid fa-calendar-days text-[#9F2ABF] text-2xl"></i>
+                            <div>
+                                <h4 class="font-heading uppercase text-sm font-bold text-white">Agenda Online</h4>
+                                <p class="text-[11px] text-[#BF80AE]">Sincronização Direta</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOBRE A BANDA -->
+        <section id="sobre" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+            <div class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Lado Esquerdo: Texto de Apresentação -->
+                    <div class="lg:col-span-7 space-y-5">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold text-[#BF80AE] uppercase tracking-widest">
+                            <i class="fa-solid fa-compact-disc text-[#9F2ABF]"></i> Conheça a Banda
+                        </div>
+                        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
+                            Energia, Nostalgia e Rock na Veia
+                        </h2>
+                        <p class="text-[#F2F2F2]/80 text-sm sm:text-base leading-relaxed">
+                            A <strong class="text-white">Banda Tempo Escasso</strong> nasceu com um propósito claro: levar o melhor do Rock e Pop Rock das décadas de 80, 90 e 2000 direto para a sua festa. Seja em bares e pubs renomados do Rio de Janeiro ou em eventos particulares (como aniversários, casamentos e churrascos), garantimos animação do início ao fim!
+                        </p>
+                        <p class="text-[#F2F2F2]/80 text-sm sm:text-base leading-relaxed">
+                            Composta por 4 músicos experientes (<span class="text-[#BF80AE]">Vocalista, Guitarrista, Baixista e Baterista</span>), a banda entrega uma performance vibrante, arranjos fiéis e interação total com o público.
+                        </p>
+
+                        <!-- Lista de Infraestrutura -->
+                        <div class="pt-2 border-t border-brand-border/60 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#F2F2F2]">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-[#9F2ABF]"></i>
+                                <span>Som completo para até 100 pessoas</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-[#9F2ABF]"></i>
+                                <span>Repertório customizável pelo contratante</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-[#9F2ABF]"></i>
+                                <span>Pontualidade e profissionalismo</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-[#9F2ABF]"></i>
+                                <span>Agenda sincronizada em tempo real</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Card Ilustrativo do Formato -->
+                    <div class="lg:col-span-5 bg-[#252140] p-6 sm:p-8 rounded-2xl border border-[#BF80AE]/30 space-y-6 text-center">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-[#48188C] flex items-center justify-center border-2 border-[#9F2ABF] shadow-lg">
+                            <i class="fa-solid fa-music text-3xl text-[#BF80AE]"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold uppercase text-white">Show Sob Medida</h3>
+                            <p class="text-xs text-[#BF80AE] mt-1">Adaptação perfeita ao espaço do seu local</p>
+                        </div>
+                        <ul class="text-xs text-left space-y-2 border-t border-brand-border pt-4 text-[#F2F2F2]/90">
+                            <li class="flex items-center justify-between">
+                                <span>Pubs & Bares Noturnos</span>
+                                <i class="fa-solid fa-beer-mug-empty text-[#9F2ABF]"></i>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span>Aniversários & Churrascos</span>
+                                <i class="fa-solid fa-cake-candles text-[#9F2ABF]"></i>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span>Casamentos & Formaturas</span>
+                                <i class="fa-solid fa-champagne-glasses text-[#9F2ABF]"></i>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span>Eventos Corporativos</span>
+                                <i class="fa-solid fa-building text-[#9F2ABF]"></i>
+                            </li>
+                        </ul>
+                        <a href="#agenda" 
+                           class="block w-full bg-[#48188C] hover:bg-[#38116b] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition border border-[#BF80AE]/30">
+                            Consultar Datas Disponíveis
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO VÍDEOS / TEASER PRINCIPAL E CARROSSEL DE PERFORMANCE -->
+        <section id="videos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#9F2ABF]/10 border border-[#9F2ABF]/30 text-[#BF80AE] text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-solid fa-video"></i> Prova Social & Autoridade
+                </div>
+                <h2 class="font-heading text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
+                    Sinta a Energia da Banda ao Vivo
+                </h2>
+                <p class="text-xs sm:text-sm text-[#BF80AE]">
+                    Veja trechos reais das nossas apresentações em pubs e eventos no Rio de Janeiro.
+                </p>
+            </div>
+
+            <!-- Vídeo Teaser Principal -->
+            <div class="bg-brand-card border border-[#BF80AE]/40 rounded-3xl p-6 sm:p-8 shadow-2xl mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/30">
+                            <i class="fa-solid fa-star"></i> Teaser Oficial
+                        </span>
+                        <h3 class="font-heading text-2xl sm:text-3xl font-bold uppercase text-white">
+                            A Experiência Tempo Escasso no Palco
+                        </h3>
+                        <p class="text-xs sm:text-sm text-[#F2F2F2]/80 leading-relaxed">
+                            Interação, peso na guitarra, vocais potentes e o repertório que bota todo mundo para cantar junto do primeiro ao último acorde.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Vi%20os%20v%C3%ADdeos%20no%20site%20e%20quero%20levar%20essa%20energia%20para%20o%20meu%20evento." 
+                               target="_blank"
+                               class="inline-flex items-center gap-2 bg-[#9F2ABF] hover:bg-[#862299] text-white font-extrabold px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/30">
+                                <i class="fa-brands fa-whatsapp text-base"></i> Quero este Show no meu Evento
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div class="aspect-video rounded-2xl overflow-hidden border border-brand-border shadow-xl bg-[#252140]">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/omnHJS-PRr4?si=0cfCPL2rSzsxFjw9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrossel de Vídeos de Performance (Reels / Trechos) -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-heading text-xl sm:text-2xl font-bold uppercase text-white flex items-center gap-2">
+                        <i class="fa-solid fa-film text-[#9F2ABF]"></i> Mais Momentos ao Vivo
+                    </h3>
+                    <div class="flex items-center gap-2">
+                        <button onclick="scrollVideoCarousel(-1)" class="w-10 h-10 rounded-xl bg-brand-card hover:bg-[#48188C] border border-brand-border text-white flex items-center justify-center transition" aria-label="Anterior">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button onclick="scrollVideoCarousel(1)" class="w-10 h-10 rounded-xl bg-brand-card hover:bg-[#48188C] border border-brand-border text-white flex items-center justify-center transition" aria-label="Próximo">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Container do Carrossel Horizontal -->
+                <div id="video-carousel" class="flex gap-6 overflow-x-auto no-scrollbar pb-4 snap-x snap-mandatory">
+                    <!-- Item 1 -->
+                    <div class="min-w-[280px] sm:min-w-[360px] lg:min-w-[400px] snap-start bg-brand-card border border-brand-border rounded-2xl p-4 space-y-3 shadow-xl">
+                        <div class="aspect-video rounded-xl overflow-hidden bg-[#252140]">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/vW3-xg-bTmw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <p class="font-heading text-sm font-bold uppercase text-white truncate">Clássico Rock 80/90 ao Vivo</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="min-w-[280px] sm:min-w-[360px] lg:min-w-[400px] snap-start bg-brand-card border border-brand-border rounded-2xl p-4 space-y-3 shadow-xl">
+                        <div class="aspect-video rounded-xl overflow-hidden bg-[#252140]">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/eHXAr3N70Cg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <p class="font-heading text-sm font-bold uppercase text-white truncate">Energia Total no Pub</p>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="min-w-[280px] sm:min-w-[360px] lg:min-w-[400px] snap-start bg-brand-card border border-brand-border rounded-2xl p-4 space-y-3 shadow-xl">
+                        <div class="aspect-video rounded-xl overflow-hidden bg-[#252140]">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/jmiyy2JOsO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <p class="font-heading text-sm font-bold uppercase text-white truncate">Grandes Sucessos do Pop Rock</p>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="min-w-[280px] sm:min-w-[360px] lg:min-w-[400px] snap-start bg-brand-card border border-brand-border rounded-2xl p-4 space-y-3 shadow-xl">
+                        <div class="aspect-video rounded-xl overflow-hidden bg-[#252140]">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/cJJpPh6NYso" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <p class="font-heading text-sm font-bold uppercase text-white truncate">Interação com o Público</p>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="min-w-[280px] sm:min-w-[360px] lg:min-w-[400px] snap-start bg-brand-card border border-brand-border rounded-2xl p-4 space-y-3 shadow-xl">
+                        <div class="aspect-video rounded-xl overflow-hidden bg-[#252140]">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/XH5OzMIU7f0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <p class="font-heading text-sm font-bold uppercase text-white truncate">Show Completo Tempo Escasso</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO AGENDA / GOOGLE CALENDAR REAL & VERIFICADOR DE DATAS -->
+        <section id="agenda" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 scroll-mt-24">
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-regular fa-calendar-days"></i> Agenda Oficial
+                </div>
+                <h2 class="font-heading text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
+                    Agenda & Disponibilidade da Banda
+                </h2>
+                <p class="text-xs sm:text-sm text-[#BF80AE]">
+                    Acompanhe os próximos shows confirmados ou verifique a disponibilidade para o seu evento.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- COLUNA 1: Os Próximos Shows Confirmados da Agenda -->
+                <div class="lg:col-span-7 bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-brand-border pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9F2ABF] to-[#48188C] flex items-center justify-center text-white shadow-md">
+                                <i class="fa-solid fa-calendar-days text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-xl font-bold uppercase text-white">Próximos Shows Confirmados</h3>
+                                <p id="sync-status-text" class="text-[11px] text-[#BF80AE] flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                                    Atualizado em tempo real
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Botões de Ação: Sincronizar / Ver Google Agenda Completa -->
+                        <div class="flex items-center gap-2">
+                            <button onclick="fetchGoogleCalendarEvents(true)" title="Atualizar Agenda" class="text-xs font-bold text-[#BF80AE] hover:text-white bg-[#252140] hover:bg-[#48188C] border border-[#BF80AE]/30 p-2.5 rounded-xl transition flex items-center justify-center">
+                                <i id="sync-icon" class="fa-solid fa-rotate text-[#9F2ABF]"></i>
+                            </button>
+                            <button onclick="openCustomCalendarModal()" class="text-xs font-bold text-[#BF80AE] hover:text-white bg-[#252140] hover:bg-[#48188C] border border-[#BF80AE]/30 px-3 py-2 rounded-xl transition flex items-center gap-1.5">
+                                <i class="fa-regular fa-calendar-days text-[#9F2ABF]"></i> Ver Agenda Completa
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lista dos próximos SHOWS da Agenda -->
+                    <div id="calendar-events-list" class="space-y-4">
+                        <!-- Carregado via JavaScript -->
+                        <div class="p-8 text-center text-[#BF80AE] space-y-3">
+                            <i class="fa-solid fa-circle-notch fa-spin text-3xl text-[#9F2ABF]"></i>
+                            <p class="text-xs font-semibold">Carregando próximos shows...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUNA 2: Ferramenta de Verificação de Data para o Contratante -->
+                <div class="lg:col-span-5 bg-gradient-to-b from-[#1e1a35] to-[#252140] border border-[#BF80AE]/40 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+                    <div class="text-center space-y-2 border-b border-brand-border pb-4">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-[#48188C] flex items-center justify-center border border-[#9F2ABF]">
+                            <i class="fa-solid fa-magnifying-glass-location text-xl text-[#BF80AE]"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold uppercase text-white">Checar Minha Data</h3>
+                        <p class="text-xs text-[#BF80AE]">
+                            Escolha a data do seu evento para checar se a agenda está livre.
+                        </p>
+                    </div>
+
+                    <form id="check-date-form" onsubmit="event.preventDefault(); checkBandAvailability();" class="space-y-4">
+                        <div>
+                            <label for="event-date" class="block text-xs font-bold uppercase tracking-wider text-[#BF80AE] mb-1.5">
+                                Data do Evento:
+                            </label>
+                            <input type="date" id="event-date" required
+                                   class="w-full bg-[#252140] border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#9F2ABF] transition">
+                        </div>
+
+                        <div>
+                            <label for="event-time" class="block text-xs font-bold uppercase tracking-wider text-[#BF80AE] mb-1.5">
+                                Horário do Show (Aproximado):
+                            </label>
+                            <select id="event-time" class="w-full bg-[#252140] border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#9F2ABF] transition">
+                                <option value="Noite">Noite (a partir das 19h)</option>
+                                <option value="Tarde">Tarde (12h às 18h)</option>
+                                <option value="Manhã / Almoço">Manhã / Almoço (09h às 12h)</option>
+                                <option value="Madrugada">Madrugada</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full bg-[#9F2ABF] hover:bg-[#862299] text-white font-extrabold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> Consultar Disponibilidade
+                        </button>
+                    </form>
+
+                    <!-- Caixas de Resultado da Busca de Data -->
+                    <div id="availability-result" class="hidden p-4 rounded-2xl border text-sm space-y-3">
+                        <!-- Preenchido via JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO "MONTE SEU REPERTÓRIO" (O DIFERENCIAL) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-[#48188C] via-[#252140] to-[#1e1a35] border border-[#BF80AE]/40 rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <span class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#9F2ABF]/30 text-[#BF80AE] text-xs font-bold uppercase tracking-widest">
+                        <i class="fa-solid fa-star"></i> Exclusividade Tempo Escasso
+                    </span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
+                        Você escolhe as músicas do seu Show!
+                    </h2>
+                    <p class="text-[#F2F2F2]/80 text-sm sm:text-base">
+                        Através da nossa ferramenta interativa, você escolhe de <strong class="text-[#BF80AE]">30 a 40 músicas</strong> do nosso repertório oficial de sucessos e ainda pode sugerir até 3 músicas especiais para o seu evento.
+                    </p>
+                    <div class="pt-4">
+                        <a href="repertorio.html" 
+                           class="inline-flex items-center gap-3 bg-[#9F2ABF] hover:bg-[#862299] text-white font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/40">
+                            <i class="fa-solid fa-sliders"></i> Acessar Montador de Repertório
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CONTATO E ORÇAMENTO -->
+        <section id="contato" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            <div class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-12 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="md:col-span-6 space-y-4">
+                        <span class="text-xs font-bold text-[#BF80AE] uppercase tracking-widest">
+                            <i class="fa-solid fa-envelope"></i> Fale Conosco
+                        </span>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold uppercase text-white">
+                            Pronto para agitar o seu evento?
+                        </h2>
+                        <p class="text-sm text-[#F2F2F2]/80 leading-relaxed">
+                            Responda-nos diretamente pelo WhatsApp ou preencha a sua solicitação. Responderemos com orçamento detalhado rapidamente.
+                        </p>
+
+                        <div class="space-y-3 pt-2 text-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-[#48188C] flex items-center justify-center text-[#BF80AE]">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-[#BF80AE] uppercase font-bold">Telefone / WhatsApp</p>
+                                    <p class="font-bold text-white">(21) 99471-4424 (Rodrigo)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-[#48188C] flex items-center justify-center text-[#BF80AE]">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-[#BF80AE] uppercase font-bold">Instagram</p>
+                                    <p class="font-bold text-white">@tempoescasso</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Ação Direta para WhatsApp -->
+                    <div class="md:col-span-6 bg-[#252140] p-6 sm:p-8 rounded-2xl border border-brand-border text-center space-y-4">
+                        <i class="fa-brands fa-whatsapp text-5xl text-emerald-400"></i>
+                        <h3 class="font-heading text-2xl font-bold uppercase text-white">Atendimento Imediato</h3>
+                        <p class="text-xs text-[#F2F2F2]/70">
+                            Clique no botão abaixo para conversar diretamente com a banda via WhatsApp.
+                        </p>
+                        <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
+                           target="_blank" 
+                           class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-600/30">
+                            Chamar no WhatsApp Agora
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL DE DETALHES DO SHOW -->
+    <div id="show-details-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-brand-card border border-[#BF80AE]/50 rounded-3xl p-6 sm:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto space-y-6 shadow-2xl relative">
+            <button onclick="closeShowDetailsModal()" class="absolute top-4 right-4 text-[#BF80AE] hover:text-white text-xl p-2 rounded-lg hover:bg-[#252140] transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b border-brand-border pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#9F2ABF] to-[#48188C] flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-guitar text-xl"></i>
+                </div>
+                <div>
+                    <span id="modal-show-date-badge" class="text-[10px] text-[#BF80AE] uppercase font-bold tracking-wider">Data do Evento</span>
+                    <h3 id="modal-show-title" class="font-heading text-xl sm:text-2xl font-bold uppercase text-white leading-tight">Título do Show</h3>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-[#F2F2F2]/90">
+                <div class="flex items-start gap-3 bg-[#252140] p-3.5 rounded-xl border border-brand-border">
+                    <i class="fa-solid fa-location-dot text-[#9F2ABF] text-base mt-0.5"></i>
+                    <div>
+                        <p class="text-[10px] text-[#BF80AE] uppercase font-bold">Local</p>
+                        <p id="modal-show-location" class="font-semibold text-white">Rio de Janeiro - RJ</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 bg-[#252140] p-3.5 rounded-xl border border-brand-border">
+                    <i class="fa-regular fa-clock text-[#9F2ABF] text-base mt-0.5"></i>
+                    <div>
+                        <p class="text-[10px] text-[#BF80AE] uppercase font-bold">Horário / Data</p>
+                        <p id="modal-show-time" class="font-semibold text-white">--</p>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5 bg-[#252140] p-4 rounded-xl border border-brand-border">
+                    <p class="text-[10px] text-[#BF80AE] uppercase font-bold"><i class="fa-solid fa-align-left mr-1"></i> Descrição e Informações</p>
+                    <div id="modal-show-description" class="text-xs sm:text-sm text-[#F2F2F2]/80 leading-relaxed whitespace-pre-line break-words pt-1">
+                        Nenhuma descrição informada.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-2">
+                <a id="modal-whatsapp-btn" href="https://wa.me/5521994714424" target="_blank"
+                   class="w-full bg-[#48188C] hover:bg-[#9F2ABF] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Consultar sobre este Evento
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DO CALENDÁRIO PRÓPRIO DA BANDA -->
+    <div id="calendar-embed-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6">
+        <div class="bg-brand-card border border-[#BF80AE]/50 rounded-3xl p-4 sm:p-6 max-w-5xl w-full max-h-[92vh] flex flex-col space-y-4 shadow-2xl relative overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-brand-border pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9F2ABF] to-[#48188C] flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid fa-calendar-days text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-xl font-bold uppercase text-white">Agenda Mensal Banda Tempo Escasso</h3>
+                        <p class="text-[11px] text-[#BF80AE]">Consulte a disponibilidade de todas as datas do mês</p>
+                    </div>
+                </div>
+                <button onclick="toggleEmbedModal()" class="text-[#BF80AE] hover:text-white text-2xl p-2 rounded-lg hover:bg-[#252140] transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Navegação de Mês & Legenda de Status -->
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-[#252140] p-3 rounded-2xl border border-brand-border text-xs">
+                <div class="flex items-center gap-2">
+                    <button onclick="changeCalendarMonth(-1)" class="bg-[#48188C] hover:bg-[#9F2ABF] text-white px-3 py-1.5 rounded-xl transition flex items-center gap-1 font-bold">
+                        <i class="fa-solid fa-chevron-left"></i> Mês Ant.
+                    </button>
+                    <span id="custom-calendar-month-title" class="font-heading text-lg font-bold text-white px-2">Carregando...</span>
+                    <button onclick="changeCalendarMonth(1)" class="bg-[#48188C] hover:bg-[#9F2ABF] text-white px-3 py-1.5 rounded-xl transition flex items-center gap-1 font-bold">
+                        Próx. Mês <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 text-[11px]">
+                    <span class="flex items-center gap-1.5 text-emerald-300 font-semibold bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-lg">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Livre
+                    </span>
+                    <span class="flex items-center gap-1.5 text-purple-300 font-semibold bg-[#48188C]/60 border border-[#9F2ABF]/40 px-2.5 py-1 rounded-lg">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#9F2ABF]"></span> Show Agendado
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid do Calendário Próprio -->
+            <div class="flex-1 overflow-y-auto pr-1">
+                <!-- Cabeçalho Dias da Semana -->
+                <div class="grid grid-cols-7 gap-1 sm:gap-2 mb-1 text-center font-heading text-xs font-bold uppercase text-[#BF80AE]">
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Dom</div>
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Seg</div>
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Ter</div>
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Qua</div>
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Qui</div>
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Sex</div>
+                    <div class="py-1 bg-[#252140]/60 rounded-lg">Sáb</div>
+                </div>
+
+                <!-- Células dos Dias -->
+                <div id="custom-calendar-grid" class="grid grid-cols-7 gap-1 sm:gap-2 text-xs">
+                    <!-- Renderizado dinamicamente via JS -->
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-[#BF80AE] pt-2 border-t border-brand-border">
+                <span><i class="fa-solid fa-hand-pointer mr-1"></i> Clique em qualquer data <strong>Livre</strong> para selecioná-la.</span>
+                <button onclick="toggleEmbedModal()" class="bg-[#48188C] hover:bg-[#38116b] text-white font-bold px-4 py-2 rounded-xl transition uppercase">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-[#1e1a35] border-t border-brand-border py-8 text-xs text-[#F2F2F2]/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <p class="font-heading text-base font-bold text-white uppercase">Banda Tempo Escasso</p>
+                <p class="text-[11px] text-[#BF80AE]">O Pop Rock mais animado do Rio de Janeiro</p>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="https://www.instagram.com/tempoescasso/" target="_blank" class="hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.youtube.com/@tempoescasso" target="_blank" class="hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-youtube"></i> YouTube
+                </a>
+            </div>
+
+            <div>
+                <p>&copy; 2026 Banda Tempo Escasso. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS DA APLICAÇÃO -->
+    <script>
+        const GOOGLE_CALENDAR_CONFIG = {
+            calendarId: 'tempoescasso@gmail.com',
+            apiKey: 'AIzaSyBesFaMVMbtZYUjg9w5u6Gad8TvvLZaf7g'
+        };
+
+        const CALENDAR_ID = GOOGLE_CALENDAR_CONFIG.calendarId;
+        let calendarEvents = [];
+        let currentDisplayDate = new Date(); // Mês atual exibido no modal
+
+        // Função para rolar o carrossel de vídeos
+        function scrollVideoCarousel(direction) {
+            const carousel = document.getElementById('video-carousel');
+            if (carousel) {
+                const scrollAmount = 360 * direction;
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Função principal para carregar os eventos da agenda (Google Calendar REST API + ICS Fallback)
+        async function fetchGoogleCalendarEvents(isManualRefresh = false) {
+            const listContainer = document.getElementById('calendar-events-list');
+            const syncStatusText = document.getElementById('sync-status-text');
+            const syncIcon = document.getElementById('sync-icon');
+
+            if (isManualRefresh && syncIcon) {
+                syncIcon.classList.add('fa-spin');
+            }
+
+            try {
+                const apiKey = GOOGLE_CALENDAR_CONFIG.apiKey;
+                const now = new Date().toISOString();
+                const apiUrl = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${apiKey}&timeMin=${now}&singleEvents=true&orderBy=startTime`;
+
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`Erro na API Google: ${response.status}`);
+                }
+
+                const data = await response.json();
+                calendarEvents = parseGoogleApiEvents(data.items || []);
+                
+                renderCalendarEvents();
+                renderCustomMonthlyCalendar();
+
+                if (syncStatusText) {
+                    syncStatusText.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span> Atualizado`;
+                }
+            } catch (err) {
+                console.warn("Falha na API oficial, tentando fallback via ICS...", err);
+                await fetchCalendarEventsFallback();
+            } finally {
+                if (isManualRefresh && syncIcon) {
+                    setTimeout(() => syncIcon.classList.remove('fa-spin'), 600);
+                }
+            }
+        }
+
+        // Parser para itens retornados pela Google Calendar API v3 com suporte a múltiplos dias unificados
+        function parseGoogleApiEvents(items) {
+            let events = [];
+            items.forEach(item => {
+                const title = item.summary || '';
+                const description = item.description || '';
+                const location = item.location || 'Rio de Janeiro - RJ';
+                
+                const startRaw = item.start.dateTime || item.start.date;
+                const endRaw = item.end.dateTime || item.end.date;
+                
+                const startDate = new Date(startRaw);
+                const endDate = new Date(endRaw);
+
+                if (!item.start.dateTime) {
+                    endDate.setDate(endDate.getDate() - 1);
+                }
+
+                const type = classifyEvent(title);
+
+                if (type === 'block') {
+                    const datesInRange = getDatesInRange(startDate, endDate);
+                    datesInRange.forEach((date, index) => {
+                        events.push({
+                            id: `${item.id}-block-${index}`,
+                            title: title,
+                            description: description,
+                            location: location,
+                            startDate: date,
+                            endDate: date,
+                            isMultiDay: false,
+                            rawStart: startDate,
+                            rawEnd: endDate,
+                            isAllDay: !item.start.dateTime,
+                            type: 'block'
+                        });
+                    });
+                } else {
+                    events.push({
+                        id: item.id,
+                        title: title,
+                        description: description,
+                        location: location,
+                        startDate: startDate,
+                        endDate: endDate,
+                        isMultiDay: startDate.toDateString() !== endDate.toDateString(),
+                        rawStart: startDate,
+                        rawEnd: endDate,
+                        isAllDay: !item.start.dateTime,
+                        type: 'show'
+                    });
+                }
+            });
+            return events;
+        }
+
+        // Fallback ICS via proxy público CORS
+        async function fetchCalendarEventsFallback() {
+            try {
+                const icsUrl = `https://calendar.google.com/calendar/ical/${encodeURIComponent(CALENDAR_ID)}/public/basic.ics`;
+                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(icsUrl)}`;
+                const response = await fetch(proxyUrl);
+                if (!response.ok) throw new Error('Falha ao carregar iCal');
+                
+                const data = await response.json();
+                if (!data.contents) throw new Error('Conteúdo iCal vazio');
+
+                calendarEvents = parseICalEvents(data.contents);
+                renderCalendarEvents();
+                renderCustomMonthlyCalendar();
+
+                const syncStatusText = document.getElementById('sync-status-text');
+                if (syncStatusText) {
+                    syncStatusText.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span> Sincronizado`;
+                }
+            } catch (err) {
+                console.error("Erro no carregamento da agenda:", err);
+                const listContainer = document.getElementById('calendar-events-list');
+                if (listContainer) {
+                    listContainer.innerHTML = `
+                        <div class="p-6 text-center text-[#BF80AE] space-y-2">
+                            <i class="fa-solid fa-calendar-xmark text-2xl"></i>
+                            <p class="text-xs">Não foi possível carregar os eventos no momento.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function getDatesInRange(startDate, endDate) {
+            let dates = [];
+            let currentDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+            let lastDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+
+            while (currentDate <= lastDate) {
+                dates.push(new Date(currentDate));
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            return dates;
+        }
+
+        function parseICalEvents(icsText) {
+            let events = [];
+            const lines = icsText.split(/\r?\n/);
+            let currentEvent = null;
+
+            for (let line of lines) {
+                if (line === 'BEGIN:VEVENT') {
+                    currentEvent = { title: '', description: '', location: '', startDate: null, endDate: null };
+                } else if (line === 'END:VEVENT' && currentEvent) {
+                    if (currentEvent.startDate && currentEvent.title) {
+                        const type = classifyEvent(currentEvent.title);
+                        const ed = currentEvent.endDate || currentEvent.startDate;
+
+                        if (type === 'block') {
+                            const datesInRange = getDatesInRange(currentEvent.startDate, ed);
+                            datesInRange.forEach((date, index) => {
+                                events.push({
+                                    id: `ics-block-${Math.random()}-${index}`,
+                                    title: currentEvent.title,
+                                    description: currentEvent.description,
+                                    location: currentEvent.location || 'Rio de Janeiro - RJ',
+                                    startDate: date,
+                                    endDate: date,
+                                    isMultiDay: false,
+                                    rawStart: currentEvent.startDate,
+                                    rawEnd: ed,
+                                    isAllDay: true,
+                                    type: 'block'
+                                });
+                            });
+                        } else {
+                            events.push({
+                                id: `ics-${Math.random()}`,
+                                title: currentEvent.title,
+                                description: currentEvent.description,
+                                location: currentEvent.location || 'Rio de Janeiro - RJ',
+                                startDate: currentEvent.startDate,
+                                endDate: ed,
+                                isMultiDay: currentEvent.startDate.toDateString() !== ed.toDateString(),
+                                rawStart: currentEvent.startDate,
+                                rawEnd: ed,
+                                isAllDay: true,
+                                type: 'show'
+                            });
+                        }
+                    }
+                    currentEvent = null;
+                } else if (currentEvent) {
+                    if (line.startsWith('SUMMARY:')) {
+                        currentEvent.title = line.substring(8).trim();
+                    } else if (line.startsWith('DESCRIPTION:')) {
+                        currentEvent.description = line.substring(12).trim().replace(/\\n/g, '<br>');
+                    } else if (line.startsWith('LOCATION:')) {
+                        currentEvent.location = line.substring(9).trim();
+                    } else if (line.startsWith('DTSTART')) {
+                        currentEvent.startDate = parseICalDate(line);
+                    } else if (line.startsWith('DTEND')) {
+                        let ed = parseICalDate(line);
+                        if (ed) {
+                            ed.setDate(ed.getDate() - 1);
+                            currentEvent.endDate = ed;
+                        }
+                    }
+                }
+            }
+            return events;
+        }
+
+        function parseICalDate(line) {
+            const parts = line.split(':');
+            if (parts.length < 2) return null;
+            let dateStr = parts[1].trim();
+            let year = parseInt(dateStr.substring(0, 4));
+            let month = parseInt(dateStr.substring(4, 6)) - 1;
+            let day = parseInt(dateStr.substring(6, 8));
+            return new Date(year, month, day);
+        }
+
+        function classifyEvent(title) {
+            if (!title || title.trim() === '') return 'block';
+            
+            const cleanTitle = title
+                .replace(/\\/g, '')
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .trim();
+
+            if (cleanTitle.includes('[bloqueio]') || 
+                cleanTitle.includes('bloqueio') || 
+                cleanTitle.includes('bloqueado') || 
+                cleanTitle.includes('indisponivel') ||
+                cleanTitle.includes('ocupado') ||
+                cleanTitle.includes('privado')) {
+                return 'block';
+            }
+
+            return 'show';
+        }
+
+        // Armazena eventos consolidados globais para consulta do modal de detalhes
+        let globalShowsList = [];
+
+        function renderCalendarEvents() {
+            const container = document.getElementById('calendar-events-list');
+            if (!container) return;
+
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
+
+            const uniqueEventsMap = new Map();
+
+            calendarEvents.forEach(ev => {
+                const evDate = new Date(ev.startDate);
+                evDate.setHours(0, 0, 0, 0);
+                const isFutureOrToday = evDate >= now;
+                
+                if (isFutureOrToday && ev.type === 'show') {
+                    const uniqueKey = `${ev.title}-${ev.rawStart ? ev.rawStart.getTime() : ev.startDate.getTime()}`;
+                    if (!uniqueEventsMap.has(uniqueKey)) {
+                        uniqueEventsMap.set(uniqueKey, ev);
+                    }
+                }
+            });
+
+            globalShowsList = Array.from(uniqueEventsMap.values());
+            globalShowsList.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+            if (globalShowsList.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 text-center text-[#BF80AE] space-y-2">
+                        <i class="fa-regular fa-calendar text-3xl text-[#9F2ABF]"></i>
+                        <p class="text-xs font-semibold">Nenhum show agendado no momento.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+
+            globalShowsList.forEach((show, index) => {
+                const d = new Date(show.startDate);
+                const dayStr = String(d.getDate()).padStart(2, '0');
+                const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+                const monthStr = months[d.getMonth()];
+                const weekdays = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
+                const weekdayStr = weekdays[d.getDay()];
+
+                const isPast = d < now;
+                const isToday = d.toDateString() === now.toDateString();
+
+                let cardClasses = "";
+                let badgeHtml = "";
+
+                if (isPast) {
+                    cardClasses = "bg-[#252140]/40 border border-brand-border/40 opacity-60";
+                    badgeHtml = `<span class="px-2.5 py-1 rounded-full bg-brand-border text-[#F2F2F2]/60 font-bold text-[10px] uppercase tracking-wider">Realizado</span>`;
+                } else if (isToday) {
+                    cardClasses = "bg-gradient-to-r from-[#2c244d] to-[#1e1a35] border-2 border-emerald-500 shadow-xl shadow-emerald-500/20 relative overflow-hidden";
+                    badgeHtml = `<span class="px-2.5 py-1 rounded-full bg-emerald-500 text-white font-bold text-[10px] uppercase tracking-wider animate-pulse flex items-center gap-1"><i class="fa-solid fa-bolt"></i> Hoje!</span>`;
+                } else if (index === 0) {
+                    cardClasses = "bg-gradient-to-r from-[#2c244d] to-[#1e1a35] border-2 border-[#9F2ABF] shadow-xl shadow-[#9F2ABF]/20 relative overflow-hidden";
+                    badgeHtml = `<span class="px-2.5 py-1 rounded-full bg-[#9F2ABF] text-white font-bold text-[10px] uppercase tracking-wider flex items-center gap-1"><i class="fa-solid fa-star"></i> Próximo Show</span>`;
+                } else {
+                    cardClasses = "bg-[#252140] border border-brand-border hover:border-[#BF80AE]/50 transition";
+                    badgeHtml = `<span class="text-[10px] text-[#BF80AE] font-semibold uppercase tracking-wider">Confirmado</span>`;
+                }
+
+                let displayTitle = show.title.replace(/\[SHOW\]/gi, '').trim();
+
+                html += `
+                    <div class="${cardClasses} p-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-[#48188C] border border-[#9F2ABF]/40 flex flex-col items-center justify-center text-white shrink-0 shadow-md">
+                                <span class="text-[10px] uppercase font-bold text-[#BF80AE]">${weekdayStr}</span>
+                                <span class="font-heading text-2xl font-black leading-none">${dayStr}</span>
+                                <span class="text-[10px] uppercase font-bold text-[#BF80AE]">${monthStr}</span>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    ${badgeHtml}
+                                </div>
+                                <h4 class="font-heading text-lg sm:text-xl font-bold uppercase text-white tracking-wide">${displayTitle}</h4>
+                                <p class="text-xs text-[#F2F2F2]/70 flex items-center gap-1">
+                                    <i class="fa-solid fa-location-dot text-[#9F2ABF]"></i> ${show.location}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="shrink-0 w-full sm:w-auto">
+                            <button onclick="openShowDetailsModal(${index})" 
+                                    class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#48188C] hover:bg-[#9F2ABF] text-white text-xs font-bold uppercase tracking-wider transition shadow-md">
+                                <i class="fa-solid fa-circle-info"></i> Detalhes
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Funções do Modal de Detalhes do Show com Links Funcionais e Horário Correto
+        function openShowDetailsModal(index) {
+            const show = globalShowsList[index];
+            if (!show) return;
+
+            const modal = document.getElementById('show-details-modal');
+            const titleEl = document.getElementById('modal-show-title');
+            const dateBadgeEl = document.getElementById('modal-show-date-badge');
+            const locationEl = document.getElementById('modal-show-location');
+            const timeEl = document.getElementById('modal-show-time');
+            const descEl = document.getElementById('modal-show-description');
+            const whatsappBtn = document.getElementById('modal-whatsapp-btn');
+
+            const displayTitle = show.title.replace(/\[SHOW\]/gi, '').trim();
+            titleEl.textContent = displayTitle;
+
+            const d = new Date(show.startDate);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateBadgeEl.textContent = d.toLocaleDateString('pt-BR', options).toUpperCase();
+
+            locationEl.textContent = show.location;
+
+            // Formatação correta da data e horário vindos da API
+            let timeStr = "";
+            if (show.isAllDay) {
+                timeStr = `${d.toLocaleDateString('pt-BR')} (Dia Inteiro)`;
+            } else {
+                const startTimeStr = show.rawStart ? new Date(show.rawStart).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
+                const endTimeStr = show.rawEnd ? new Date(show.rawEnd).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
+                const startDateStr = new Date(show.rawStart).toLocaleDateString('pt-BR');
+                const endDateStr = new Date(show.rawEnd).toLocaleDateString('pt-BR');
+                
+                if (startDateStr === endDateStr && startTimeStr && endTimeStr) {
+                    timeStr = `${startDateStr} das ${startTimeStr} às ${endTimeStr}`;
+                } else if (startTimeStr) {
+                    timeStr = `${startDateStr} às ${startTimeStr} até ${endDateStr} ${endTimeStr}`;
+                } else {
+                    timeStr = startDateStr;
+                }
+            }
+            timeEl.textContent = timeStr;
+
+            // Renderizar HTML enviado pela API na descrição com links abrindo em nova aba
+            if (show.description && show.description.trim() !== '') {
+                let cleanHtmlDesc = show.description;
+                if (!cleanHtmlDesc.includes('target="_blank"')) {
+                    cleanHtmlDesc = cleanHtmlDesc.replace(/<a /g, '<a target="_blank" rel="noopener noreferrer" class="text-[#BF80AE] hover:text-white underline font-semibold" ');
+                }
+                descEl.innerHTML = cleanHtmlDesc;
+            } else {
+                descEl.textContent = "Nenhuma descrição informada para este evento.";
+            }
+
+            whatsappBtn.href = `https://wa.me/5521994714424?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20evento%20"${encodeURIComponent(displayTitle)}"%20do%20dia%20${d.toLocaleDateString('pt-BR')}.`;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeShowDetailsModal() {
+            document.getElementById('show-details-modal').classList.add('hidden');
+        }
+
+        // Funções do Modal do Calendário Próprio
+        function openCustomCalendarModal() {
+            document.getElementById('calendar-embed-modal').classList.remove('hidden');
+            renderCustomMonthlyCalendar();
+        }
+
+        function toggleEmbedModal() {
+            document.getElementById('calendar-embed-modal').classList.add('hidden');
+        }
+
+        function changeCalendarMonth(direction) {
+            currentDisplayDate.setMonth(currentDisplayDate.getMonth() + direction);
+            renderCustomMonthlyCalendar();
+        }
+
+        function renderCustomMonthlyCalendar() {
+            const gridContainer = document.getElementById('custom-calendar-grid');
+            const titleContainer = document.getElementById('custom-calendar-month-title');
+            if (!gridContainer || !titleContainer) return;
+
+            const year = currentDisplayDate.getFullYear();
+            const month = currentDisplayDate.getMonth();
+
+            const monthsNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            titleContainer.textContent = `${monthsNames[month]} ${year}`;
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let html = '';
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                html += `<div class="aspect-square bg-[#252140]/30 rounded-xl opacity-20"></div>`;
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const currentDate = new Date(year, month, day);
+                currentDate.setHours(0, 0, 0, 0);
+
+                const isPast = currentDate < today;
+                const dateStringISO = currentDate.toDateString();
+
+                const matchingEvents = calendarEvents.filter(ev => {
+                    const evDate = new Date(ev.startDate);
+                    evDate.setHours(0, 0, 0, 0);
+                    return evDate.toDateString() === dateStringISO && ev.type === 'show';
+                });
+
+                const hasBlock = calendarEvents.some(ev => {
+                    const evDate = new Date(ev.startDate);
+                    evDate.setHours(0, 0, 0, 0);
+                    return evDate.toDateString() === dateStringISO && ev.type === 'block';
+                });
+
+                let status = 'free';
+                let eventTitle = '';
+                let matchingGlobalIndex = -1;
+
+                if (matchingEvents.length > 0) {
+                    status = 'show';
+                    eventTitle = matchingEvents[0].title.replace(/\[SHOW\]/gi, '').trim();
+                    matchingGlobalIndex = globalShowsList.findIndex(gs => {
+                        const gsDate = new Date(gs.startDate);
+                        gsDate.setHours(0,0,0,0);
+                        return gsDate.toDateString() === dateStringISO && gs.title === matchingEvents[0].title;
+                    });
+                } else if (hasBlock) {
+                    status = 'block';
+                }
+
+                let cellClasses = "";
+                let badgeContent = "";
+
+                if (isPast) {
+                    cellClasses = "bg-[#252140]/40 border border-brand-border/40 text-white/30 opacity-60";
+                    badgeContent = `<span class="text-[9px] uppercase tracking-wider">Realizado</span>`;
+                } else if (status === 'block') {
+                    cellClasses = "bg-[#252140]/40 border border-brand-border/20 text-white/20 cursor-not-allowed";
+                    badgeContent = ``;
+                } else if (status === 'show') {
+                    cellClasses = "bg-[#48188C]/70 border border-[#9F2ABF] text-white hover:bg-[#48188C] transition cursor-pointer shadow-md shadow-[#9F2ABF]/10";
+                    badgeContent = `<span class="px-1.5 py-0.5 rounded bg-[#9F2ABF] text-white font-bold text-[9px] truncate max-w-full">Detalhes</span>`;
+                } else {
+                    cellClasses = "bg-[#252140] border border-brand-border hover:border-[#9F2ABF] text-white transition cursor-pointer";
+                    badgeContent = `<span class="px-1.5 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 font-bold text-[9px]">Livre</span>`;
+                }
+
+                let clickAction = '';
+                if (!isPast && status === 'show' && matchingGlobalIndex !== -1) {
+                    clickAction = `onclick="toggleEmbedModal(); openShowDetailsModal(${matchingGlobalIndex});"`;
+                } else if (!isPast && status === 'free') {
+                    clickAction = `onclick="selectDateFromCalendar('${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}')"`;
+                }
+
+                const titleAttr = status === 'show' ? `title="Clique para ver Detalhes: ${eventTitle}"` : '';
+
+                html += `
+                    <div ${clickAction} ${titleAttr} class="aspect-square rounded-2xl p-1.5 flex flex-col justify-between items-center text-center ${cellClasses} group relative">
+                        <span class="font-heading text-xs font-bold ${currentDate.toDateString() === today.toDateString() ? 'text-[#BF80AE] underline' : ''}">${day}</span>
+                        
+                        <div class="w-full flex flex-col items-center justify-center">
+                            ${status === 'show' ? `<span class="text-[9px] font-bold text-white truncate w-full px-1">${eventTitle}</span>` : ''}
+                            ${badgeContent}
+                        </div>
+                    </div>
+                `;
+            }
+
+            gridContainer.innerHTML = html;
+        }
+
+        function selectDateFromCalendar(dateStr) {
+            const dateInput = document.getElementById('event-date');
+            if (dateInput) {
+                dateInput.value = dateStr;
+                toggleEmbedModal();
+                document.getElementById('agenda').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function checkBandAvailability() {
+            const dateInput = document.getElementById('event-date').value;
+            const resultBox = document.getElementById('availability-result');
+            
+            if (!dateInput) return;
+
+            const selectedDate = new Date(dateInput + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            resultBox.classList.remove('hidden');
+
+            if (selectedDate < today) {
+                resultBox.className = "p-4 rounded-2xl border text-sm space-y-2 bg-amber-950/40 border-amber-500/40 text-amber-300";
+                resultBox.innerHTML = `
+                    <div class="flex items-center gap-2 font-bold uppercase text-xs">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Data no Passado
+                    </div>
+                    <p class="text-xs">A data selecionada já passou. Por favor, escolha uma data futura.</p>
+                `;
+                return;
+            }
+
+            const dateStringISO = selectedDate.toDateString();
+            const matchingEvents = calendarEvents.filter(ev => {
+                const evDate = new Date(ev.startDate);
+                evDate.setHours(0, 0, 0, 0);
+                return evDate.toDateString() === dateStringISO;
+            });
+
+            const hasBlock = matchingEvents.some(ev => ev.type === 'block');
+            const hasShow = matchingEvents.some(ev => ev.type === 'show');
+
+            const optionsDay = String(selectedDate.getDate()).padStart(2, '0');
+            const optionsMonths = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+            const optionsMonthStr = optionsMonths[selectedDate.getMonth()];
+            const optionsYear = selectedDate.getFullYear();
+            const formattedDate = `${optionsDay}/${optionsMonthStr}/${optionsYear}`;
+
+            if (hasBlock || hasShow) {
+                resultBox.className = "p-4 rounded-2xl border text-sm space-y-3 bg-red-950/40 border-red-500/40 text-red-200";
+                resultBox.innerHTML = `
+                    <div class="flex items-center gap-2 font-bold uppercase text-xs text-red-400">
+                        <i class="fa-solid fa-circle-xmark"></i> Data Indisponível
+                    </div>
+                    <p class="text-xs leading-relaxed">
+                        Infelizmente a banda já possui um compromisso agendado para o dia <strong>${formattedDate}</strong>.
+                    </p>
+                `;
+            } else {
+                resultBox.className = "p-4 rounded-2xl border text-sm space-y-3 bg-emerald-950/40 border-emerald-500/40 text-emerald-200";
+                resultBox.innerHTML = `
+                    <div class="flex items-center gap-2 font-bold uppercase text-xs text-emerald-400">
+                        <i class="fa-solid fa-circle-check"></i> Data Disponível!
+                    </div>
+                    <p class="text-xs leading-relaxed">
+                        O dia <strong>${formattedDate}</strong> está disponível na agenda da banda.
+                    </p>
+                    <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Verifiquei%20no%20site%20que%20o%20dia%20${formattedDate}%20est%C3%A1%20dispon%C3%ADvel%20e%20gostaria%20de%20pedir%20or%C3%A7amento." 
+                       target="_blank"
+                       class="block w-full text-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-md">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> Garantir esta Data no WhatsApp
+                    </a>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchGoogleCalendarEvents();
+        });
+    </script>
+</body>
+</html>
