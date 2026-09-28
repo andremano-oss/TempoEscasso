@@ -1,0 +1,800 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montador de Repertório | Banda Tempo Escasso</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Oswald para Títulos e Montserrat para Texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#252140',         /* Roxo muito escuro / fundo */
+                            card: '#1e1a35',       /* Card escuro */
+                            textLight: '#F2F2F2',  /* Texto claro */
+                            accent: '#9F2ABF',     /* Púrpura vibrante principal */
+                            accentHover: '#862299',/* Púrpura escuro hover */
+                            lilac: '#BF80AE',      /* Lilás suave de destaque */
+                            border: '#3c3566'      /* Cor de bordas */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #252140;
+            color: #F2F2F2;
+            scroll-behavior: smooth;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(191, 128, 174, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(159,42,191,0.25) 0%, rgba(37,33,64,0) 70%);
+        }
+        /* Esconder scrollbar mantendo funcionalidade */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#9F2ABF] selection:text-white bg-grid-pattern min-h-screen flex flex-col justify-between">
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <header class="sticky top-0 z-50 bg-[#252140]/90 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logótipo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition overflow-hidden">
+                    <img src="https://andremano-oss.github.io/TempoEscasso/logotempoescasso.png" alt="Logo Tempo Escasso" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.parentNode.innerHTML='<i class=\'fa-solid fa-guitar text-white text-lg\'></i>';">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-xl font-bold tracking-wider uppercase text-white leading-none">Tempo Escasso</span>
+                    <span class="text-[10px] text-[#BF80AE] font-semibold tracking-widest uppercase">O POP ROCK MAIS ANIMADO DO RJ</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider">
+                <a href="#sobre" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Sobre</a>
+                <a href="#videos" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-video text-[#BF80AE]"></i> Vídeos
+                </a>
+                <a href="#agenda" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-calendar-check text-[#BF80AE]"></i> Agenda
+                </a>
+                <a href="repertorio.html" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-sliders text-[#9F2ABF]"></i> Monte seu Repertório
+                </a>
+                <a href="#contato" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Contato</a>
+            </nav>
+
+            <!-- Botão de Ação do Menu -->
+            <div class="hidden md:block">
+                <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20show%20da%20Banda%20Tempo%20Escasso." 
+                   target="_blank" 
+                   class="bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/30 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Contratar Agora
+                </a>
+            </div>
+
+            <!-- Botão Menu Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden text-[#F2F2F2] text-2xl focus:outline-none" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Desdobrável -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-3 pb-6 space-y-3 text-sm font-semibold uppercase tracking-wider">
+            <a href="#sobre" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Sobre</a>
+            <a href="#videos" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+                <i class="fa-solid fa-video text-[#BF80AE]"></i> Vídeos e Performances
+            </a>
+            <a href="#agenda" class="block py-2 text-[#BF80AE] font-bold flex items-center gap-2">
+                <i class="fa-regular fa-calendar-check"></i> Agenda e Disponibilidade
+            </a>
+            <a href="repertorio.html" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+                <i class="fa-solid fa-sliders"></i> Monte seu Repertório
+            </a>
+            <a href="#contato" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Contato</a>
+            <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20show%20da%20Banda%20Tempo%20Escasso." 
+               target="_blank" 
+               class="w-full mt-2 bg-[#9F2ABF] text-white font-bold py-3 rounded-xl text-xs uppercase text-center block shadow-lg shadow-[#9F2ABF]/30">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Pedir Orçamento
+            </a>
+        </div>
+
+
+    <!-- FERRAMENTA INTERATIVA DE SELEÇÃO DE REPERTÓRIO -->
+    <main class="max-w-5xl mx-auto space-y-8">
+        
+        <!-- Cabeçalho do Construtor -->
+        <div class="text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#48188C]/50 border border-[#BF80AE]/30 text-[#BF80AE] text-xs font-bold uppercase tracking-widest mb-4">
+                <i class="fa-solid fa-sliders"></i> Ferramenta Interativa
+            </div>
+            <h1 class="font-heading text-3xl sm:text-5xl font-extrabold uppercase text-[#F2F2F2] tracking-tight">
+                Monte o Repertório do Seu Evento
+            </h1>
+            <p class="text-[#F2F2F2]/80 text-sm sm:text-base mt-3">
+                Personalize o espetáculo! A sua lista final deve conter de <strong class="text-[#BF80AE]">30 a 40 músicas no total</strong> (somando as músicas escolhidas da nossa lista padrão + até 3 sugestões extras).
+            </p>
+        </div>
+
+        <!-- SEÇÃO SPOTIFY: Prévia do Áudio / Playlist -->
+        <div class="bg-brand-card p-4 sm:p-5 rounded-2xl border border-brand-border shadow-xl shadow-black/20">
+            <div class="flex items-center gap-2 text-xs font-bold text-[#BF80AE] uppercase tracking-wider mb-3">
+                <i class="fa-brands fa-spotify text-emerald-400 text-lg"></i>
+                <span>Ouça uma prévia das nossas Músicas</span>
+            </div>
+            <div class="overflow-hidden rounded-xl border border-brand-border">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0Ki1GFhvosMNtKA7VlKsjd?utm_source=generator&theme=0&si=2c49b7838151437a" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 1: PESQUISA, FILTROS DINÂMICOS E LISTA DE MÚSICAS -->
+        <div class="space-y-6">
+            
+            <!-- Barra de Controle: Busca e Filtros dinâmicos tipo Pílula -->
+            <div class="bg-brand-card p-4 sm:p-5 rounded-2xl border border-brand-border space-y-4 shadow-xl shadow-black/20">
+                
+                <!-- Pesquisa por texto -->
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-[#BF80AE]/70 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Pesquisar artista ou música..." 
+                           class="w-full pl-11 pr-4 py-3 bg-[#252140]/60 border border-brand-border rounded-xl text-sm text-[#F2F2F2] placeholder-[#BF80AE]/50 focus:outline-none focus:border-[#9F2ABF] transition">
+                </div>
+
+                <!-- Filtros gerados automaticamente a partir da Coluna A -->
+                <div id="category-filters-container" class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+                    <button onclick="setCategoryFilter('ALL')" id="filter-all" 
+                            class="px-5 py-2 rounded-full text-xs font-bold uppercase transition bg-[#9F2ABF] text-white shadow-lg shadow-[#9F2ABF]/30 whitespace-nowrap">
+                        Todas
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lista de Músicas com Scroll -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border p-4 sm:p-5 shadow-xl shadow-black/20">
+                <div class="flex items-center justify-between border-b border-brand-border pb-3 mb-4 text-xs font-bold text-[#BF80AE] uppercase tracking-wider">
+                    <span>Música & Artista</span>
+                    <span>Ação</span>
+                </div>
+
+                <!-- Estado Carregando -->
+                <div id="loading-spinner" class="py-12 text-center text-[#F2F2F2]/80">
+                    <i class="fa-solid fa-circle-notch fa-spin text-3xl text-[#9F2ABF] mb-3 block"></i>
+                    A carregar a lista completa de músicas da banda...
+                </div>
+
+                <!-- Lista Renderizada -->
+                <div id="songs-container" class="space-y-2.5 max-h-[520px] overflow-y-auto custom-scrollbar pr-2 hidden">
+                    <!-- Injetado via JS -->
+                </div>
+            </div>
+
+            <!-- SEÇÃO 2: BLOCO DE INSERÇÃO DE ATÉ 3 MÚSICAS EXTRAS -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border p-5 sm:p-6 shadow-xl shadow-black/20">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                    <h3 class="font-heading text-xl font-bold uppercase text-white flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle text-[#9F2ABF]"></i> Adicionar Músicas Especiais
+                    </h3>
+                    <span id="custom-count-badge" class="self-start sm:self-auto text-xs bg-[#252140] text-[#BF80AE] font-bold px-3 py-1 rounded-full border border-[#BF80AE]/30">
+                        0 / 3 Músicas
+                    </span>
+                </div>
+                <p class="text-xs text-[#F2F2F2]/70 mb-4">
+                    Não encontrou alguma música essencial no nosso repertório? Pode sugerir até 3 músicas extras no formato: <strong class="text-white">[Nome do Artista] - [Nome da Música]</strong>. Elas contam para a sua meta total.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                    <input type="text" id="custom-song-input" placeholder="Ex: Cássia Eller - Malandragem" 
+                           class="flex-1 bg-[#252140]/60 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-[#F2F2F2] placeholder-[#BF80AE]/50 focus:outline-none focus:border-[#9F2ABF] transition">
+                    <button onclick="addCustomSong()" class="bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/30">
+                        Adicionar
+                    </button>
+                </div>
+
+                <ul id="custom-songs-list" class="space-y-2 text-sm text-[#F2F2F2]">
+                    <!-- Injetado via JS -->
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- SEÇÃO 3: RESUMO DO EVENTO E FINALIZAÇÃO (POSICIONADO NO FINAL) -->
+        <div class="bg-brand-card rounded-2xl border border-brand-border p-6 sm:p-8 space-y-6 shadow-2xl shadow-black/30">
+            <div class="border-b border-brand-border pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-bold uppercase text-white">
+                        Resumo do Evento
+                    </h2>
+                    <p class="text-xs text-[#BF80AE] mt-1">Confira a contagem total, preencha os seus dados e gere o documento final.</p>
+                </div>
+                <div class="text-xs font-semibold px-3 py-1 rounded-full bg-[#252140] text-[#BF80AE] border border-brand-border self-start sm:self-auto">
+                    Passo Final
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                
+                <!-- Card Contador das Músicas Padrão (Col 5) -->
+                <div id="counter-card" class="md:col-span-5 bg-[#252140]/80 p-6 rounded-2xl border border-[#BF80AE]/40 text-center space-y-2">
+                    <p class="text-xs uppercase font-bold text-[#BF80AE] tracking-wider">Total de Músicas Selecionadas</p>
+                    <div class="flex items-center justify-center gap-2 py-1">
+                        <span id="selected-count" class="font-heading text-5xl font-extrabold text-[#9F2ABF]">0</span>
+                        <span class="text-[#F2F2F2]/40 font-heading text-2xl">/ 30 a 40</span>
+                    </div>
+                    <p id="counter-detail-text" class="text-[11px] text-[#F2F2F2]/70 font-medium">
+                        (<span id="repertoire-count-text">0</span> da lista + <span id="custom-count-text">0</span> extras)
+                    </p>
+                    <p id="counter-status-text" class="text-xs text-[#BF80AE] font-medium pt-1">
+                        <i class="fa-solid fa-info-circle"></i> A seleção total (com extras) deve ter entre 30 e 40 músicas.
+                    </p>
+                </div>
+
+                <!-- Formulário de Dados do Cliente (Col 7) -->
+                <div class="md:col-span-7 space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-[#F2F2F2] uppercase mb-1">Seu Nome / Contratante</label>
+                        <input type="text" id="client-name" placeholder="Ex: Maria Santos & João" 
+                               class="w-full bg-[#252140]/60 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-[#F2F2F2] placeholder-[#BF80AE]/50 focus:outline-none focus:border-[#9F2ABF] transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-[#F2F2F2] uppercase mb-1">Tipo de Evento</label>
+                            <select id="event-type" class="w-full bg-[#252140] border border-brand-border rounded-xl px-3 py-2.5 text-xs text-[#F2F2F2] focus:outline-none focus:border-[#9F2ABF] transition">
+                                <option value="Casamento">Casamento</option>
+                                <option value="Aniversário">Aniversário</option>
+                                <option value="Corporativo">Corporativo</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-[#F2F2F2] uppercase mb-1">Data do Evento</label>
+                            <input type="date" id="event-date" class="w-full bg-[#252140] border border-brand-border rounded-xl px-3 py-2.5 text-xs text-[#F2F2F2] focus:outline-none focus:border-[#9F2ABF] transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-[#F2F2F2] uppercase mb-1">Telefone / WhatsApp</label>
+                        <input type="tel" id="client-phone" placeholder="(21) 99999-9999" 
+                               class="w-full bg-[#252140]/60 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-[#F2F2F2] placeholder-[#BF80AE]/50 focus:outline-none focus:border-[#9F2ABF] transition">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botões de Ação Final (PDF e WhatsApp) alinhados em uma única linha e compactos -->
+            <div class="pt-4 border-t border-brand-border flex flex-col md:flex-row items-center justify-between gap-3">
+                <button id="btn-generate-pdf" onclick="generatePDF()" disabled 
+                        class="flex-1 w-full md:w-auto bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold py-2.5 px-4 rounded-xl uppercase text-[11px] tracking-wide transition shadow-md shadow-[#9F2ABF]/20 flex items-center justify-center gap-1.5 opacity-50 cursor-not-allowed whitespace-nowrap">
+                    <i class="fa-solid fa-file-pdf"></i> Gerar PDF da Lista (30-40)
+                </button>
+
+                <button onclick="downloadFullRepertoire()" 
+                        class="flex-1 w-full md:w-auto bg-[#48188C] hover:bg-[#38116b] text-[#F2F2F2] font-bold py-2.5 px-4 rounded-xl uppercase text-[11px] tracking-wide transition border border-[#BF80AE]/30 flex items-center justify-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-download"></i> Baixar Lista Completa
+                </button>
+
+                <button onclick="sendToWhatsApp()" 
+                        class="flex-1 w-full md:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-xl uppercase text-[11px] tracking-wide transition shadow-md shadow-emerald-600/20 flex items-center justify-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Enviar p/ WhatsApp
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- TEMPLATE PARA IMPRESSÃO EM PDF -->
+    <div id="pdf-wrapper">
+        <div id="pdf-template">
+            <!-- 1. Cabeçalho e Dados do Contratante -->
+            <div style="text-align: center; border-bottom: 2px solid #9F2ABF; padding-bottom: 8px; margin-bottom: 12px;">
+                <h1 style="font-size: 20px; font-weight: bold; margin: 0; color: #252140; text-transform: uppercase;">BANDA TEMPO ESCASSO</h1>
+                <p style="font-size: 10px; color: #555; margin: 3px 0 0 0;">Repertório Personalizado do Evento | Contato: Rodrigo (21) 99471-4424</p>
+            </div>
+
+            <div style="background: #f4f2f8; border: 1px solid #48188C; padding: 8px 12px; border-radius: 6px; margin-bottom: 14px; font-size: 10px; color: #252140;">
+                <p style="margin: 2px 0;"><strong>Contratante:</strong> <span id="pdf-client-name">-</span></p>
+                <p style="margin: 2px 0;"><strong>Tipo de Evento:</strong> <span id="pdf-event-type">-</span> | <strong>Data:</strong> <span id="pdf-event-date">-</span></p>
+                <p style="margin: 2px 0;"><strong>Telefone / WhatsApp:</strong> <span id="pdf-client-phone">-</span></p>
+            </div>
+
+            <!-- 2. Tabela de Músicas do Repertório Selecionado -->
+            <div>
+                <h3 style="font-size: 11px; font-weight: bold; color: #252140; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 6px; text-transform: uppercase;" id="pdf-title-count">
+                    REPERTÓRIO SELECIONADO (<span id="pdf-song-count">0</span> MÚSICAS)
+                </h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 12px;">
+                    <thead>
+                        <tr style="background: #252140; color: #ffffff;">
+                            <th style="padding: 5px 6px; text-align: left; width: 28%;">Estilo</th>
+                            <th style="padding: 5px 6px; text-align: left; width: 36%;">Artista</th>
+                            <th style="padding: 5px 6px; text-align: left; width: 36%;">Música</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pdf-songs-body">
+                        <!-- Preenchido via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. Seção de Músicas Especiais Solicitadas -->
+            <div id="pdf-custom-section" style="margin-top: 10px; margin-bottom: 12px; display: none;">
+                <h3 style="font-size: 11px; font-weight: bold; color: #9F2ABF; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 6px; text-transform: uppercase;">
+                    ★ Músicas Especiais Solicitadas (Até 3 Músicas)
+                </h3>
+                <ul id="pdf-custom-list" style="font-size: 10px; padding-left: 16px; margin: 0; color: #222;"></ul>
+            </div>
+
+            <!-- Rodapé do PDF -->
+            <div style="margin-top: 16px; border-top: 1px solid #ddd; padding-top: 6px; text-align: center; font-size: 8.5px; color: #666;">
+                Banda Tempo Escasso • Instagram: @tempoescasso • YouTube: youtube.com/tempoescasso
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Principal JS -->
+    <script>
+        const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1n7GsYK1cLcW1pdvSjlMA3RNoquFeEEuVvWrW_ZlYRVI/gviz/tq?tqx=out:csv&gid=0';
+
+        const BACKUP_REPERTOIRE = [
+            { id: 1, categoria: "Rock Nacional", artista: "Barão Vermelho", musica: "Pro Dia Nascer Feliz", selected: true },
+            { id: 2, categoria: "Rock Nacional", artista: "Barão Vermelho", musica: "Maior Abandonado", selected: true },
+            { id: 3, categoria: "Rock Nacional", artista: "Legião Urbana", musica: "Tempo Perdido", selected: true },
+            { id: 4, categoria: "Rock Nacional", artista: "Legião Urbana", musica: "Será", selected: true },
+            { id: 5, categoria: "Pop Rock Nacional", artista: "Cássia Eller", musica: "Malandragem", selected: true },
+            { id: 6, categoria: "Pop Rock Nacional", artista: "Lulu Santos", musica: "Toda Forma de Amor", selected: true },
+            { id: 7, categoria: "Pop Rock Nacional", artista: "Lulu Santos", musica: "Assim Caminha a Humanidade", selected: true },
+            { id: 8, categoria: "Rock Nacional", artista: "Raul Seixas", musica: "Metamorfose Ambulante", selected: true },
+            { id: 9, categoria: "Pop Rock Nacional", artista: "Titãs", musica: "Epitáfio", selected: true },
+            { id: 10, categoria: "Rock Nacional", artista: "Titãs", musica: "Polícia", selected: true },
+            { id: 11, categoria: "Pop Rock Nacional", artista: "Kid Abelha", musica: "Pintura Íntima", selected: true },
+            { id: 12, categoria: "Rock Nacional", artista: "RPM", musica: "Olhar 43", selected: true },
+            { id: 13, categoria: "Pop Rock Nacional", artista: "Jota Quest", musica: "Do Seu Lado", selected: true },
+            { id: 14, categoria: "Pop Rock Nacional", artista: "Jota Quest", musica: "Fácil", selected: true },
+            { id: 15, categoria: "Pop Rock Nacional", artista: "Paralamas do Sucesso", musica: "Meu Erro", selected: true },
+            { id: 16, categoria: "Pop Rock Nacional", artista: "Paralamas do Sucesso", musica: "Lanterna dos Afogados", selected: true },
+            { id: 17, categoria: "Pop Rock Nacional", artista: "Capital Inicial", musica: "Primeiros Erros", selected: true },
+            { id: 18, categoria: "Rock Nacional", artista: "Capital Inicial", musica: "À Sua Maneira", selected: true },
+            { id: 19, categoria: "Rock Nacional", artista: "Biquíni Cavadão", musica: "Tédio", selected: true },
+            { id: 20, categoria: "Pop Rock Nacional", artista: "LS Jack", musica: "Carla", selected: true },
+            { id: 21, categoria: "Rock Nacional", artista: "O Rappa", musica: "Minha Alma", selected: true },
+            { id: 22, categoria: "Rock Nacional", artista: "Lobão", musica: "Me Chama", selected: true },
+            { id: 23, categoria: "Pop Rock Nacional", artista: "Los Hermanos", musica: "Anna Julia", selected: true },
+            { id: 24, categoria: "Pop Rock Nacional", artista: "Skank", musica: "Vou Deixar", selected: true },
+            { id: 25, categoria: "Pop Rock Nacional", artista: "Skank", musica: "Saideira", selected: true },
+            { id: 26, categoria: "Rock Internacional", artista: "Guns N' Roses", musica: "Sweet Child O' Mine", selected: true },
+            { id: 27, categoria: "Rock Internacional", artista: "Guns N' Roses", musica: "Paradise City", selected: true },
+            { id: 28, categoria: "Rock Internacional", artista: "Bon Jovi", musica: "Livin' On A Prayer", selected: true },
+            { id: 29, categoria: "Rock Internacional", artista: "Bon Jovi", musica: "It's My Life", selected: true },
+            { id: 30, categoria: "Rock Internacional", artista: "Pearl Jam", musica: "Alive", selected: true },
+            { id: 31, categoria: "Rock Internacional", artista: "Steppenwolf", musica: "Born To Be Wild", selected: true },
+            { id: 32, categoria: "Rock Internacional", artista: "AC/DC", musica: "Highway to Hell", selected: true },
+            { id: 33, categoria: "Rock Internacional", artista: "Queen", musica: "Crazy Little Thing Called Love", selected: true },
+            { id: 34, categoria: "Rock Internacional", artista: "The Beatles", musica: "Twist and Shout", selected: true },
+            { id: 35, categoria: "Rock Internacional", artista: "Creedence Clearwater Revival", musica: "Have You Ever Seen The Rain", selected: true }
+        ];
+
+        let repertoire = [];
+        let customSongs = [];
+        let currentFilter = 'ALL';
+        let searchQuery = '';
+
+        window.onload = async function() {
+            await loadRepertoireFromSheet();
+            setupEventListeners();
+            updateUI();
+        };
+
+        async function loadRepertoireFromSheet() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                if (!response.ok) throw new Error('Não foi possível conectar com a planilha.');
+                
+                const csvText = await response.text();
+                const parsedData = parseCSV(csvText);
+
+                if (parsedData.length > 0) {
+                    repertoire = parsedData.map((row, index) => ({
+                        id: index + 1,
+                        categoria: row[0] || 'Rock Nacional',
+                        artista: row[1] || 'Artista',
+                        musica: row[2] || 'Música',
+                        selected: true
+                    }));
+                } else {
+                    throw new Error('Planilha vazia.');
+                }
+            } catch (err) {
+                console.warn('A utilizar lista pré-carregada de backup devido a restrição de rede/CORS:', err);
+                repertoire = BACKUP_REPERTOIRE.map(song => ({ ...song, selected: true }));
+            } finally {
+                document.getElementById('loading-spinner').classList.add('hidden');
+                document.getElementById('songs-container').classList.remove('hidden');
+                buildDynamicFilters();
+                updateUI();
+            }
+        }
+
+        function parseCSVLine(line) {
+            const values = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    values.push(current.trim().replace(/^"(.*)"$/, '$1'));
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            values.push(current.trim().replace(/^"(.*)"$/, '$1'));
+            return values;
+        }
+
+        function parseCSV(text) {
+            const lines = text.split('\n');
+            const result = [];
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                if (i === 0) continue; // Cabeçalho
+
+                const cols = parseCSVLine(line);
+                if (cols.length >= 3) {
+                    result.push([cols[0], cols[1], cols[2]]);
+                }
+            }
+            return result;
+        }
+
+        function buildDynamicFilters() {
+            const container = document.getElementById('category-filters-container');
+            const categories = [...new Set(repertoire.map(item => item.categoria))].filter(Boolean);
+
+            let html = `
+                <button onclick="setCategoryFilter('ALL')" id="filter-btn-ALL" 
+                        class="px-5 py-2 rounded-full text-xs font-bold uppercase transition bg-[#9F2ABF] text-white shadow-lg shadow-[#9F2ABF]/30 whitespace-nowrap">
+                    Todas
+                </button>
+            `;
+
+            categories.forEach(cat => {
+                const safeId = cat.replace(/[^a-zA-Z0-9]/g, '_');
+                html += `
+                    <button onclick="setCategoryFilter('${cat}')" id="filter-btn-${safeId}" 
+                            class="px-5 py-2 rounded-full text-xs font-bold uppercase transition bg-[#252140] text-[#F2F2F2]/80 hover:text-white border border-brand-border hover:border-[#9F2ABF] whitespace-nowrap">
+                        ${cat}
+                    </button>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function setupEventListeners() {
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                renderSongs();
+            });
+        }
+
+        function setCategoryFilter(category) {
+            currentFilter = category;
+            const buttons = document.querySelectorAll('#category-filters-container button');
+            buttons.forEach(btn => {
+                const isSelected = (category === 'ALL' && btn.id === 'filter-btn-ALL') || 
+                                   (btn.id === `filter-btn-${category.replace(/[^a-zA-Z0-9]/g, '_')}`);
+                
+                if (isSelected) {
+                    btn.className = "px-5 py-2 rounded-full text-xs font-bold uppercase transition bg-[#9F2ABF] text-white shadow-lg shadow-[#9F2ABF]/30 whitespace-nowrap";
+                } else {
+                    btn.className = "px-5 py-2 rounded-full text-xs font-bold uppercase transition bg-[#252140] text-[#F2F2F2]/80 hover:text-white border border-brand-border hover:border-[#9F2ABF] whitespace-nowrap";
+                }
+            });
+
+            renderSongs();
+        }
+
+        function toggleSongSelection(id) {
+            const item = repertoire.find(s => s.id === id);
+            if (item) {
+                item.selected = !item.selected;
+                updateUI();
+            }
+        }
+
+        function addCustomSong() {
+            const input = document.getElementById('custom-song-input');
+            const value = input.value.trim();
+
+            if (!value) {
+                alert('Por favor, escreva o nome do artista e da música no formato [Artista] - [Música].');
+                return;
+            }
+
+            if (customSongs.length >= 3) {
+                alert('Já atingiu o limite de 3 músicas personalizadas.');
+                return;
+            }
+
+            customSongs.push(value);
+            input.value = '';
+            updateUI();
+        }
+
+        function removeCustomSong(index) {
+            customSongs.splice(index, 1);
+            updateUI();
+        }
+
+        function renderCustomSongs() {
+            const ul = document.getElementById('custom-songs-list');
+            ul.innerHTML = '';
+            
+            if (customSongs.length === 0) {
+                ul.innerHTML = '<li class="text-xs text-[#BF80AE]/60 italic">Nenhuma música extra inserida até ao momento.</li>';
+                return;
+            }
+
+            customSongs.forEach((song, idx) => {
+                const li = document.createElement('li');
+                li.className = "flex items-center justify-between bg-[#252140]/60 px-3.5 py-2.5 rounded-xl border border-brand-border text-xs";
+                li.innerHTML = `
+                    <span><strong class="text-[#BF80AE]">#${idx+1}</strong> ${escapeHTML(song)}</span>
+                    <button onclick="removeCustomSong(${idx})" class="text-rose-400 hover:text-rose-300 font-bold px-2 py-0.5">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                `;
+                ul.appendChild(li);
+            });
+        }
+
+        function renderSongs() {
+            const container = document.getElementById('songs-container');
+            container.innerHTML = '';
+
+            const filtered = repertoire.filter(song => {
+                const matchesFilter = currentFilter === 'ALL' || song.categoria.toLowerCase() === currentFilter.toLowerCase();
+                const matchesSearch = song.artista.toLowerCase().includes(searchQuery) || song.musica.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="text-center py-8 text-xs text-[#BF80AE]/60">Nenhuma música encontrada nesta categoria.</div>';
+                return;
+            }
+
+            filtered.forEach(song => {
+                const div = document.createElement('div');
+                div.className = `flex items-center justify-between p-3 sm:p-3.5 rounded-xl border transition ${
+                    song.selected ? 'bg-[#48188C]/40 border-[#BF80AE]/50' : 'bg-[#252140]/40 border-brand-border/60 opacity-60'
+                }`;
+
+                let badgeClass = 'bg-[#48188C]/80 text-[#BF80AE] border border-[#BF80AE]/40';
+                const catLower = song.categoria.toLowerCase();
+                if (catLower.includes('pop rock')) {
+                    badgeClass = 'bg-[#9F2ABF]/30 text-[#F2F2F2] border border-[#9F2ABF]/50';
+                } else if (catLower.includes('nacional')) {
+                    badgeClass = 'bg-[#48188C] text-[#BF80AE] border border-[#BF80AE]/30';
+                }
+
+                div.innerHTML = `
+                    <div class="flex flex-col pr-2">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-xs sm:text-sm font-bold ${song.selected ? 'text-white' : 'text-[#F2F2F2]/60'}">${escapeHTML(song.musica)}</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full ${badgeClass}">
+                                ${escapeHTML(song.categoria)}
+                            </span>
+                        </div>
+                        <span class="text-xs text-[#BF80AE]/80 mt-0.5">${escapeHTML(song.artista)}</span>
+                    </div>
+
+                    <button onclick="toggleSongSelection(${song.id})" 
+                            class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap ${
+                                song.selected 
+                                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30 hover:bg-rose-500/30' 
+                                : 'bg-[#9F2ABF] text-white hover:bg-[#862299] shadow-sm shadow-[#9F2ABF]/30'
+                            }">
+                        <i class="fa-solid ${song.selected ? 'fa-minus' : 'fa-plus'}"></i>
+                        ${song.selected ? 'Remover' : 'Incluir'}
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function updateUI() {
+            renderSongs();
+            renderCustomSongs();
+            
+            const repertoireSelectedCount = repertoire.filter(s => s.selected).length;
+            const customCount = customSongs.length;
+            const totalSelected = repertoireSelectedCount + customCount;
+
+            document.getElementById('custom-count-badge').innerText = `${customCount} / 3 Músicas`;
+            document.getElementById('repertoire-count-text').innerText = repertoireSelectedCount;
+            document.getElementById('custom-count-text').innerText = customCount;
+
+            const countEl = document.getElementById('selected-count');
+            countEl.innerText = totalSelected;
+
+            const statusText = document.getElementById('counter-status-text');
+            const counterCard = document.getElementById('counter-card');
+            const btnGeneratePDF = document.getElementById('btn-generate-pdf');
+
+            // Validação da regra (30 a 40 músicas) para habilitar o PDF personalizado
+            if (totalSelected >= 30 && totalSelected <= 40) {
+                counterCard.className = "md:col-span-5 bg-emerald-950/40 p-6 rounded-2xl border border-emerald-500/50 text-center space-y-2";
+                countEl.className = "font-heading text-5xl font-extrabold text-emerald-400";
+                statusText.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400"></i> Perfeito! Quantidade ideal atingida.';
+                statusText.className = "text-xs text-emerald-400 font-medium pt-1";
+                
+                // Habilita o botão de Gerar PDF
+                btnGeneratePDF.disabled = false;
+                btnGeneratePDF.className = "flex-1 w-full md:w-auto bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold py-2.5 px-4 rounded-xl uppercase text-[11px] tracking-wide transition shadow-md shadow-[#9F2ABF]/30 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap";
+                btnGeneratePDF.innerHTML = '<i class="fa-solid fa-file-pdf"></i> Gerar PDF da Lista (30-40)';
+            } else {
+                if (totalSelected < 30) {
+                    counterCard.className = "md:col-span-5 bg-[#252140]/80 p-6 rounded-2xl border border-[#BF80AE]/40 text-center space-y-2";
+                    countEl.className = "font-heading text-5xl font-extrabold text-[#BF80AE]";
+                    statusText.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-[#BF80AE]"></i> Faltam ${30 - totalSelected} música(s) para o mínimo de 30.`;
+                } else {
+                    counterCard.className = "md:col-span-5 bg-rose-950/40 p-6 rounded-2xl border border-rose-500/40 text-center space-y-2";
+                    countEl.className = "font-heading text-5xl font-extrabold text-rose-400";
+                    statusText.innerHTML = `<i class="fa-solid fa-circle-exclamation text-rose-400"></i> Excedeu ${totalSelected - 40} música(s) do limite de 40.`;
+                }
+                statusText.className = "text-xs font-medium pt-1 " + (totalSelected < 30 ? "text-[#BF80AE]" : "text-rose-400");
+                
+                // Desabilita o botão de Gerar PDF
+                btnGeneratePDF.disabled = true;
+                btnGeneratePDF.className = "flex-1 w-full md:w-auto bg-[#9F2ABF] text-white font-bold py-2.5 px-4 rounded-xl uppercase text-[11px] tracking-wide transition shadow-md shadow-[#9F2ABF]/10 flex items-center justify-center gap-1.5 opacity-50 cursor-not-allowed whitespace-nowrap";
+                btnGeneratePDF.innerHTML = '<i class="fa-solid fa-lock"></i> Gerar PDF Bloqueado (30-40)';
+            }
+        }
+
+        // Exportação do PDF Personalizado (restrito a 30-40 músicas)
+        function generatePDF() {
+            const selectedSongs = repertoire.filter(s => s.selected);
+            const totalSelected = selectedSongs.length + customSongs.length;
+
+            if (totalSelected < 30 || totalSelected > 40) {
+                alert('A lista precisa ter entre 30 e 40 músicas para gerar o PDF personalizado.');
+                return;
+            }
+
+            executePDFExport(selectedSongs, "Repertorio_Personalizado");
+        }
+
+        // Exportação da Lista Completa (livre de restrições de quantidade)
+        function downloadFullRepertoire() {
+            const allSelectedSongs = repertoire; // Todas da lista
+            executePDFExport(allSelectedSongs, "Repertorio_Completo_Geral");
+        }
+
+        function executePDFExport(songsList, fileNamePrefix) {
+            const clientName = document.getElementById('client-name').value.trim() || 'Não informado';
+            const eventType = document.getElementById('event-type').value;
+            const eventDate = document.getElementById('event-date').value || 'A definir';
+            const clientPhone = document.getElementById('client-phone').value.trim() || 'Não informado';
+
+            document.getElementById('pdf-client-name').innerText = clientName;
+            document.getElementById('pdf-event-type').innerText = eventType;
+            document.getElementById('pdf-event-date').innerText = eventDate;
+            document.getElementById('pdf-client-phone').innerText = clientPhone;
+
+            document.getElementById('pdf-song-count').innerText = songsList.length;
+            const tbody = document.getElementById('pdf-songs-body');
+            tbody.innerHTML = '';
+
+            songsList.forEach((s, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = 'pdf-row-avoid-break';
+                tr.style.backgroundColor = idx % 2 === 0 ? '#fbfafc' : '#ffffff';
+                tr.innerHTML = `
+                    <td style="padding: 4px 6px; border-bottom: 1px solid #eee; color: #444;">${escapeHTML(s.categoria)}</td>
+                    <td style="padding: 4px 6px; border-bottom: 1px solid #eee; color: #111;"><strong>${escapeHTML(s.artista)}</strong></td>
+                    <td style="padding: 4px 6px; border-bottom: 1px solid #eee; color: #111;">${escapeHTML(s.musica)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const pdfCustomSection = document.getElementById('pdf-custom-section');
+            const pdfCustomList = document.getElementById('pdf-custom-list');
+            pdfCustomList.innerHTML = '';
+
+            if (customSongs.length > 0) {
+                pdfCustomSection.style.display = 'block';
+                customSongs.forEach(s => {
+                    const li = document.createElement('li');
+                    li.style.marginBottom = '2px';
+                    li.innerText = s;
+                    pdfCustomList.appendChild(li);
+                });
+            } else {
+                pdfCustomSection.style.display = 'none';
+            }
+
+            const element = document.getElementById('pdf-template');
+            
+            const opt = {
+                margin:       [8, 8, 8, 8],
+                filename:     `${fileNamePrefix}_TempoEscasso_${clientName.replace(/\s+/g, '_')}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2, 
+                    useCORS: true,
+                    scrollY: 0,
+                    scrollX: 0
+                },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+
+        function sendToWhatsApp() {
+            const selectedSongs = repertoire.filter(s => s.selected);
+            const totalSelected = selectedSongs.length + customSongs.length;
+            const clientName = document.getElementById('client-name').value.trim() || 'Cliente';
+            const eventType = document.getElementById('event-type').value;
+
+            let msg = `*REPERTÓRIO BANDA TEMPO ESCASSO*\n`;
+            msg += `*Cliente:* ${clientName}\n`;
+            msg += `*Evento:* ${eventType}\n`;
+            msg += `*Total de Músicas:* ${totalSelected} (${selectedSongs.length} do repertório padrão + ${customSongs.length} sugestões extras)\n`;
+
+            if (customSongs.length > 0) {
+                msg += `\n*Músicas Extras Sugeridas (${customSongs.length}):*\n`;
+                customSongs.forEach((c, i) => {
+                    msg += `${i+1}. ${c}\n`;
+                });
+            }
+
+            msg += `\n_Enviei também a lista gerada em PDF!_`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/5521994714424?text=${encoded}`, '_blank');
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>
