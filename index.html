@@ -23,7 +23,6 @@
                             bg: '#252140',         /* Roxo muito escuro / fundo */
                             card: '#1e1a35',       /* Card escuro */
                             textLight: '#F2F2F2',  /* Texto claro */
-                            darkPurple: '#48188C', /* Roxo profundo */
                             accent: '#9F2ABF',     /* Púrpura vibrante principal */
                             accentHover: '#862299',/* Púrpura escuro hover */
                             lilac: '#BF80AE',      /* Lilás suave de destaque */
@@ -69,12 +68,12 @@
             
             <!-- Logótipo -->
             <a href="index.html" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9F2ABF] to-[#48188C] flex items-center justify-center shadow-lg shadow-[#9F2ABF]/20 group-hover:scale-105 transition">
-                    <i class="fa-solid fa-guitar text-white text-lg"></i>
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition overflow-hidden">
+                    <img src="https://andremano-oss.github.io/TempoEscasso/logotempoescasso.png" alt="Logo Tempo Escasso" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.parentNode.innerHTML='<i class=\'fa-solid fa-guitar text-white text-lg\'></i>';">
                 </div>
                 <div class="flex flex-col">
                     <span class="font-heading text-xl font-bold tracking-wider uppercase text-white leading-none">Tempo Escasso</span>
-                    <span class="text-[10px] text-[#BF80AE] font-semibold tracking-widest uppercase">Banda Cover Rock</span>
+                    <span class="text-[10px] text-[#BF80AE] font-semibold tracking-widest uppercase">O POP ROCK MAIS ANIMADO DO RJ</span>
                 </div>
             </a>
 
@@ -139,7 +138,7 @@
                 <div class="text-center max-w-4xl mx-auto space-y-6">
                     
                     <!-- Selo de Destaque -->
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#48188C]/60 border border-[#BF80AE]/40 text-[#BF80AE] text-xs font-bold uppercase tracking-widest shadow-md">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9F2ABF]/20 border border-[#BF80AE]/40 text-[#BF80AE] text-xs font-bold uppercase tracking-widest shadow-md">
                         <i class="fa-solid fa-bolt text-yellow-400"></i> O Pop Rock mais animado do RJ
                     </div>
 
@@ -249,7 +248,7 @@
 
                     <!-- Lado Direito: Card Ilustrativo do Formato -->
                     <div class="lg:col-span-5 bg-[#252140] p-6 sm:p-8 rounded-2xl border border-[#BF80AE]/30 space-y-6 text-center">
-                        <div class="w-20 h-20 mx-auto rounded-full bg-[#48188C] flex items-center justify-center border-2 border-[#9F2ABF] shadow-lg">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-[#9F2ABF]/20 flex items-center justify-center border-2 border-[#9F2ABF] shadow-lg">
                             <i class="fa-solid fa-music text-3xl text-[#BF80AE]"></i>
                         </div>
                         <div>
@@ -275,7 +274,7 @@
                             </li>
                         </ul>
                         <a href="#agenda" 
-                           class="block w-full bg-[#48188C] hover:bg-[#38116b] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition border border-[#BF80AE]/30">
+                           class="block w-full bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition border border-[#BF80AE]/30 shadow-md">
                             Consultar Datas Disponíveis
                         </a>
                     </div>
@@ -288,7 +287,7 @@
         <section id="videos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
             <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#9F2ABF]/10 border border-[#9F2ABF]/30 text-[#BF80AE] text-xs font-bold uppercase tracking-widest">
-                    <i class="fa-solid fa-video"></i> Prova Social & Autoridade
+                    <i class="fa-solid fa-video"></i> Performance e Energia
                 </div>
                 <h2 class="font-heading text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
                     Sinta a Energia da Banda ao Vivo
@@ -298,40 +297,18 @@
                 </p>
             </div>
 
-            <!-- Vídeo Teaser Principal -->
-            <div class="bg-brand-card border border-[#BF80AE]/40 rounded-3xl p-6 sm:p-8 shadow-2xl mb-12">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-5 space-y-4">
-                        <span class="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/30">
-                            <i class="fa-solid fa-star"></i> Teaser Oficial
-                        </span>
-                        <h3 class="font-heading text-2xl sm:text-3xl font-bold uppercase text-white">
-                            A Experiência Tempo Escasso no Palco
-                        </h3>
-                        <p class="text-xs sm:text-sm text-[#F2F2F2]/80 leading-relaxed">
-                            Interação, peso na guitarra, vocais potentes e o repertório que bota todo mundo para cantar junto do primeiro ao último acorde.
-                        </p>
-                        <div class="pt-2">
-                            <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Vi%20os%20v%C3%ADdeos%20no%20site%20e%20quero%20levar%20essa%20energia%20para%20o%20meu%20evento." 
-                               target="_blank"
-                               class="inline-flex items-center gap-2 bg-[#9F2ABF] hover:bg-[#862299] text-white font-extrabold px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-[#9F2ABF]/30">
-                                <i class="fa-brands fa-whatsapp text-base"></i> Quero este Show no meu Evento
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-7">
-                        <div class="aspect-video rounded-2xl overflow-hidden border border-brand-border shadow-xl bg-[#252140]">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/omnHJS-PRr4?si=0cfCPL2rSzsxFjw9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
+            <!-- Vídeo Principal (Ajustado para perfeito encaixe mobile sem corte) -->
+            <div class="max-w-3xl mx-auto mb-12">
+                <div class="aspect-video w-full rounded-2xl overflow-hidden border border-brand-border shadow-xl bg-[#252140]">
+                    <iframe class="w-full h-full object-cover" src="https://www.youtube.com/embed/omnHJS-PRr4?si=0cfCPL2rSzsxFjw9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <!-- Carrossel de Vídeos de Performance (Reels / Trechos) -->
+            <!-- Carrossel de Vídeos de Performance (Tempo Escasso Ao Vivo) -->
             <div class="space-y-6">
                 <div class="flex items-center justify-between">
                     <h3 class="font-heading text-xl sm:text-2xl font-bold uppercase text-white flex items-center gap-2">
-                        <i class="fa-solid fa-film text-[#9F2ABF]"></i> Mais Momentos ao Vivo
+                        <i class="fa-solid fa-film text-[#9F2ABF]"></i> Tempo Escasso Ao Vivo
                     </h3>
                     <div class="flex items-center gap-2">
                         <button onclick="scrollVideoCarousel(-1)" class="w-10 h-10 rounded-xl bg-brand-card hover:bg-[#48188C] border border-brand-border text-white flex items-center justify-center transition" aria-label="Anterior">
@@ -487,7 +464,7 @@
 
         <!-- SEÇÃO "MONTE SEU REPERTÓRIO" (O DIFERENCIAL) -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-[#48188C] via-[#252140] to-[#1e1a35] border border-[#BF80AE]/40 rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
+            <div class="bg-gradient-to-r from-[#9F2ABF]/30 via-[#252140] to-[#1e1a35] border border-[#BF80AE]/40 rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
                 <div class="max-w-3xl mx-auto space-y-4">
                     <span class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#9F2ABF]/30 text-[#BF80AE] text-xs font-bold uppercase tracking-widest">
                         <i class="fa-solid fa-star"></i> Exclusividade Tempo Escasso
@@ -526,7 +503,7 @@
 
                         <div class="space-y-3 pt-2 text-sm">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-[#48188C] flex items-center justify-center text-[#BF80AE]">
+                                <div class="w-9 h-9 rounded-lg bg-[#9F2ABF]/20 border border-[#BF80AE]/30 flex items-center justify-center text-[#BF80AE]">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
@@ -536,7 +513,7 @@
                             </div>
 
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-[#48188C] flex items-center justify-center text-[#BF80AE]">
+                                <div class="w-9 h-9 rounded-lg bg-[#9F2ABF]/20 border border-[#BF80AE]/30 flex items-center justify-center text-[#BF80AE]">
                                     <i class="fa-brands fa-instagram"></i>
                                 </div>
                                 <div>
@@ -611,7 +588,7 @@
 
             <div class="pt-2">
                 <a id="modal-whatsapp-btn" href="https://wa.me/5521994714424" target="_blank"
-                   class="w-full bg-[#48188C] hover:bg-[#9F2ABF] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg">
+                   class="w-full bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg">
                     <i class="fa-brands fa-whatsapp text-base"></i> Consultar sobre este Evento
                 </a>
             </div>
@@ -624,7 +601,7 @@
             <!-- Modal Header -->
             <div class="flex items-center justify-between border-b border-brand-border pb-3">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9F2ABF] to-[#48188C] flex items-center justify-center text-white shadow-md">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9F2ABF] to-[#862299] flex items-center justify-center text-white shadow-md">
                         <i class="fa-solid fa-calendar-days text-lg"></i>
                     </div>
                     <div>
@@ -640,11 +617,11 @@
             <!-- Navegação de Mês & Legenda de Status -->
             <div class="flex flex-wrap items-center justify-between gap-3 bg-[#252140] p-3 rounded-2xl border border-brand-border text-xs">
                 <div class="flex items-center gap-2">
-                    <button onclick="changeCalendarMonth(-1)" class="bg-[#48188C] hover:bg-[#9F2ABF] text-white px-3 py-1.5 rounded-xl transition flex items-center gap-1 font-bold">
+                    <button onclick="changeCalendarMonth(-1)" class="bg-[#9F2ABF] hover:bg-[#862299] text-white px-3 py-1.5 rounded-xl transition flex items-center gap-1 font-bold">
                         <i class="fa-solid fa-chevron-left"></i> Mês Ant.
                     </button>
                     <span id="custom-calendar-month-title" class="font-heading text-lg font-bold text-white px-2">Carregando...</span>
-                    <button onclick="changeCalendarMonth(1)" class="bg-[#48188C] hover:bg-[#9F2ABF] text-white px-3 py-1.5 rounded-xl transition flex items-center gap-1 font-bold">
+                    <button onclick="changeCalendarMonth(1)" class="bg-[#9F2ABF] hover:bg-[#862299] text-white px-3 py-1.5 rounded-xl transition flex items-center gap-1 font-bold">
                         Próx. Mês <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
@@ -653,7 +630,7 @@
                     <span class="flex items-center gap-1.5 text-emerald-300 font-semibold bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-lg">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Livre
                     </span>
-                    <span class="flex items-center gap-1.5 text-purple-300 font-semibold bg-[#48188C]/60 border border-[#9F2ABF]/40 px-2.5 py-1 rounded-lg">
+                    <span class="flex items-center gap-1.5 text-purple-300 font-semibold bg-[#9F2ABF]/20 border border-[#BF80AE]/40 px-2.5 py-1 rounded-lg">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#9F2ABF]"></span> Show Agendado
                     </span>
                 </div>
@@ -680,7 +657,7 @@
 
             <div class="flex items-center justify-between text-xs text-[#BF80AE] pt-2 border-t border-brand-border">
                 <span><i class="fa-solid fa-hand-pointer mr-1"></i> Clique em qualquer data <strong>Livre</strong> para selecioná-la.</span>
-                <button onclick="toggleEmbedModal()" class="bg-[#48188C] hover:bg-[#38116b] text-white font-bold px-4 py-2 rounded-xl transition uppercase">
+                <button onclick="toggleEmbedModal()" class="bg-[#9F2ABF] hover:bg-[#862299] text-white font-bold px-4 py-2 rounded-xl transition uppercase">
                     Fechar
                 </button>
             </div>
@@ -970,7 +947,6 @@
             return 'show';
         }
 
-        // Armazena eventos consolidados globais para consulta do modal de detalhes
         let globalShowsList = [];
 
         function renderCalendarEvents() {
@@ -1043,7 +1019,7 @@
                 html += `
                     <div class="${cardClasses} p-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 rounded-2xl bg-[#48188C] border border-[#9F2ABF]/40 flex flex-col items-center justify-center text-white shrink-0 shadow-md">
+                            <div class="w-16 h-16 rounded-2xl bg-[#9F2ABF]/20 border border-[#9F2ABF]/40 flex flex-col items-center justify-center text-white shrink-0 shadow-md">
                                 <span class="text-[10px] uppercase font-bold text-[#BF80AE]">${weekdayStr}</span>
                                 <span class="font-heading text-2xl font-black leading-none">${dayStr}</span>
                                 <span class="text-[10px] uppercase font-bold text-[#BF80AE]">${monthStr}</span>
@@ -1060,7 +1036,7 @@
                         </div>
                         <div class="shrink-0 w-full sm:w-auto">
                             <button onclick="openShowDetailsModal(${index})" 
-                                    class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#48188C] hover:bg-[#9F2ABF] text-white text-xs font-bold uppercase tracking-wider transition shadow-md">
+                                    class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#9F2ABF] hover:bg-[#862299] text-white text-xs font-bold uppercase tracking-wider transition shadow-md">
                                 <i class="fa-solid fa-circle-info"></i> Detalhes
                             </button>
                         </div>
@@ -1071,7 +1047,6 @@
             container.innerHTML = html;
         }
 
-        // Funções do Modal de Detalhes do Show com Links Funcionais e Horário Correto
         function openShowDetailsModal(index) {
             const show = globalShowsList[index];
             if (!show) return;
@@ -1093,7 +1068,6 @@
 
             locationEl.textContent = show.location;
 
-            // Formatação correta da data e horário vindos da API
             let timeStr = "";
             if (show.isAllDay) {
                 timeStr = `${d.toLocaleDateString('pt-BR')} (Dia Inteiro)`;
@@ -1113,7 +1087,6 @@
             }
             timeEl.textContent = timeStr;
 
-            // Renderizar HTML enviado pela API na descrição com links abrindo em nova aba
             if (show.description && show.description.trim() !== '') {
                 let cleanHtmlDesc = show.description;
                 if (!cleanHtmlDesc.includes('target="_blank"')) {
@@ -1133,7 +1106,6 @@
             document.getElementById('show-details-modal').classList.add('hidden');
         }
 
-        // Funções do Modal do Calendário Próprio
         function openCustomCalendarModal() {
             document.getElementById('calendar-embed-modal').classList.remove('hidden');
             renderCustomMonthlyCalendar();
@@ -1215,7 +1187,7 @@
                     cellClasses = "bg-[#252140]/40 border border-brand-border/20 text-white/20 cursor-not-allowed";
                     badgeContent = ``;
                 } else if (status === 'show') {
-                    cellClasses = "bg-[#48188C]/70 border border-[#9F2ABF] text-white hover:bg-[#48188C] transition cursor-pointer shadow-md shadow-[#9F2ABF]/10";
+                    cellClasses = "bg-[#9F2ABF]/30 border border-[#9F2ABF] text-white hover:bg-[#9F2ABF]/50 transition cursor-pointer shadow-md shadow-[#9F2ABF]/10";
                     badgeContent = `<span class="px-1.5 py-0.5 rounded bg-[#9F2ABF] text-white font-bold text-[9px] truncate max-w-full">Detalhes</span>`;
                 } else {
                     cellClasses = "bg-[#252140] border border-brand-border hover:border-[#9F2ABF] text-white transition cursor-pointer";
