@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Oswald para Títulos e Montserrat para Texto -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <!-- html2pdf Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -22,6 +25,7 @@
                             bg: '#252140',         /* Roxo muito escuro / fundo */
                             card: '#1e1a35',       /* Card escuro */
                             textLight: '#F2F2F2',  /* Texto claro */
+                            darkPurple: '#48188C', /* Roxo profundo */
                             accent: '#9F2ABF',     /* Púrpura vibrante principal */
                             accentHover: '#862299',/* Púrpura escuro hover */
                             lilac: '#BF80AE',      /* Lilás suave de destaque */
@@ -46,22 +50,43 @@
             background-image: radial-gradient(rgba(191, 128, 174, 0.15) 1px, transparent 1px);
             background-size: 24px 24px;
         }
-        .hero-glow {
-            background: radial-gradient(circle, rgba(159,42,191,0.25) 0%, rgba(37,33,64,0) 70%);
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-        /* Esconder scrollbar mantendo funcionalidade */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e1a35;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #9F2ABF;
+            border-radius: 3px;
+        }
+
+        /* Regras estritas de renderização para o PDF */
+        #pdf-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -50;
+        }
+        #pdf-template {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+            background: #ffffff;
+            padding: 20px 24px;
+            width: 750px;
+            box-sizing: border-box;
+        }
+        .pdf-row-avoid-break {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
         }
     </style>
 </head>
 <body class="antialiased selection:bg-[#9F2ABF] selection:text-white bg-grid-pattern min-h-screen flex flex-col justify-between">
 
-    <!-- MENU DE NAVEGAÇÃO -->
+    <!-- MENU DE NAVEGAÇÃO (Com links ajustados para index.html) -->
     <header class="sticky top-0 z-50 bg-[#252140]/90 backdrop-blur-md border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -78,17 +103,17 @@
 
             <!-- Menu Desktop -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider">
-                <a href="#sobre" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Sobre</a>
-                <a href="#videos" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                <a href="index.html#sobre" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Sobre</a>
+                <a href="index.html#videos" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
                     <i class="fa-solid fa-video text-[#BF80AE]"></i> Vídeos
                 </a>
-                <a href="#agenda" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                <a href="index.html#agenda" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
                     <i class="fa-regular fa-calendar-check text-[#BF80AE]"></i> Agenda
                 </a>
-                <a href="repertorio.html" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                <a href="repertorio.html" class="text-[#9F2ABF] hover:text-[#BF80AE] transition flex items-center gap-1.5">
                     <i class="fa-solid fa-sliders text-[#9F2ABF]"></i> Monte seu Repertório
                 </a>
-                <a href="#contato" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Contato</a>
+                <a href="index.html#contato" class="text-[#F2F2F2]/80 hover:text-[#BF80AE] transition">Contato</a>
             </nav>
 
             <!-- Botão de Ação do Menu -->
@@ -108,27 +133,27 @@
 
         <!-- Menu Mobile Desdobrável -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-3 pb-6 space-y-3 text-sm font-semibold uppercase tracking-wider">
-            <a href="#sobre" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Sobre</a>
-            <a href="#videos" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+            <a href="index.html#sobre" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Sobre</a>
+            <a href="index.html#videos" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
                 <i class="fa-solid fa-video text-[#BF80AE]"></i> Vídeos e Performances
             </a>
-            <a href="#agenda" class="block py-2 text-[#BF80AE] font-bold flex items-center gap-2">
-                <i class="fa-regular fa-calendar-check"></i> Agenda e Disponibilidade
+            <a href="index.html#agenda" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+                <i class="fa-regular fa-calendar-check text-[#BF80AE]"></i> Agenda e Disponibilidade
             </a>
-            <a href="repertorio.html" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE] flex items-center gap-2">
+            <a href="repertorio.html" class="block py-2 text-[#9F2ABF] font-bold flex items-center gap-2">
                 <i class="fa-solid fa-sliders"></i> Monte seu Repertório
             </a>
-            <a href="#contato" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Contato</a>
+            <a href="index.html#contato" class="block py-2 text-[#F2F2F2]/80 hover:text-[#BF80AE]">Contato</a>
             <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20show%20da%20Banda%20Tempo%20Escasso." 
                target="_blank" 
                class="w-full mt-2 bg-[#9F2ABF] text-white font-bold py-3 rounded-xl text-xs uppercase text-center block shadow-lg shadow-[#9F2ABF]/30">
                 <i class="fa-brands fa-whatsapp text-sm"></i> Pedir Orçamento
             </a>
         </div>
-
+    </header>
 
     <!-- FERRAMENTA INTERATIVA DE SELEÇÃO DE REPERTÓRIO -->
-    <main class="max-w-5xl mx-auto space-y-8">
+    <main class="flex-1 w-full max-w-5xl mx-auto space-y-8 pt-10 pb-16 px-4 sm:px-6 lg:px-8">
         
         <!-- Cabeçalho do Construtor -->
         <div class="text-center max-w-3xl mx-auto">
@@ -359,8 +384,37 @@
         </div>
     </div>
 
+    <!-- RODAPÉ (Mesmo da Home) -->
+    <footer class="bg-[#1e1a35] border-t border-brand-border py-8 text-xs text-[#F2F2F2]/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <p class="font-heading text-base font-bold text-white uppercase">Banda Tempo Escasso</p>
+                <p class="text-[11px] text-[#BF80AE]">O Pop Rock mais animado do Rio de Janeiro</p>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="https://www.instagram.com/tempoescasso/" target="_blank" class="hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.youtube.com/@tempoescasso" target="_blank" class="hover:text-[#BF80AE] transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-youtube"></i> YouTube
+                </a>
+            </div>
+
+            <div>
+                <p>&copy; 2026 Banda Tempo Escasso. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Script Principal JS -->
     <script>
+        // Script para o Menu Mobile
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Script do Repertório
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1n7GsYK1cLcW1pdvSjlMA3RNoquFeEEuVvWrW_ZlYRVI/gviz/tq?tqx=out:csv&gid=0';
 
         const BACKUP_REPERTOIRE = [
