@@ -51,7 +51,7 @@
             background-size: 24px 24px;
         }
         .hero-glow {
-            background: radial-gradient(circle, rgba(159,42,191,0.25) 0%, rgba(37,33,64,0) 70%);
+            background: radial-gradient(circle, rgba(159,42,191,0.3) 0%, rgba(37,33,64,0.8) 70%);
         }
         /* Esconder scrollbar mantendo funcionalidade */
         .no-scrollbar::-webkit-scrollbar {
@@ -133,11 +133,11 @@
 
     <main class="space-y-20 pb-16">
 
-        <!-- SEÇÃO HERO (CHAMADA PRINCIPAL) -->
-        <section class="relative pt-12 lg:pt-20 overflow-hidden">
-            <div class="absolute inset-0 hero-glow pointer-events-none"></div>
+        <!-- SEÇÃO HERO (CHAMADA PRINCIPAL COM A ARTE TEMÁTICA) -->
+        <section class="relative pt-8 lg:pt-16 overflow-hidden">
+            <div class="absolute inset-0 hero-glow pointer-events-none z-10"></div>
             
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
                 <div class="text-center max-w-4xl mx-auto space-y-6">
                     
                     <!-- Selo de Destaque -->
@@ -155,8 +155,21 @@
                         Os maiores clássicos do Rock Nacional e Internacional dos anos 80, 90 e 2000 tocados com a energia máxima que o seu público merece.
                     </p>
 
+                    <!-- Banner Artístico Incorporado (/artetempoescasso.jpg) -->
+                    <div class="relative my-8 rounded-3xl overflow-hidden border-2 border-[#BF80AE]/40 shadow-2xl group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#252140] via-transparent to-transparent opacity-80 z-10"></div>
+                        <img src="/artetempoescasso.jpg" alt="Arte Temática Banda Tempo Escasso" class="w-full h-[260px] sm:h-[420px] object-cover object-center group-hover:scale-105 transition duration-700" onerror="this.onerror=null; this.src='https://placehold.co/1200x600/1e1a35/BF80AE?text=Banda+Tempo+Escasso';">
+                        
+                        <div class="absolute bottom-4 left-4 right-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-2 bg-[#252140]/80 backdrop-blur-md px-6 py-3 rounded-2xl border border-brand-border">
+                            <span class="font-heading text-sm sm:text-lg font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-hourglass-half text-[#BF80AE]"></i> Cada Segundo é um Show de Energia
+                            </span>
+                            <span class="text-xs text-[#BF80AE] font-semibold uppercase">Rio de Janeiro - RJ</span>
+                        </div>
+                    </div>
+
                     <!-- Botões de Ação Principais -->
-                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a href="https://wa.me/5521994714424?text=Ol%C3%A1!%20Quero%20contratar%20a%20Banda%20Tempo%20Escasso%20para%20o%20meu%20evento." 
                            target="_blank"
                            class="w-full sm:w-auto bg-[#9F2ABF] hover:bg-[#862299] text-white font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-xl shadow-[#9F2ABF]/40 flex items-center justify-center gap-3 group">
